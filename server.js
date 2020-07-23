@@ -5,6 +5,7 @@
 // but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
+const socket = require('socket.io');
 
 // our default array of dreams
 const dreams = [
@@ -22,13 +23,15 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
 
-// send the default array of dreams to the webpage
-app.get("/dreams", (request, response) => {
-  // express helps us take JS objects and send them as JSON
-  response.json(dreams);
-});
-
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
+var io = socket(listener);
+
+io.sockets.on('connection',newConnection);
+
+function newConnection(socket){
+  console.log('new connection: ' + socket.id)
+}

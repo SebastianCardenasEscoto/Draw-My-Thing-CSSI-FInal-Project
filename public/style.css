@@ -54,3 +54,31 @@ footer {
   padding-top: 1.5em;
   border-top: 1px solid lightgrey;
 }
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.btn1 {
+  background-color: blue;
+  height: 30px;
+  width: 60;
+  color: white;
+  align: left;
+}
+.btn2  {
+  text-align: right;
+  background-color: yellow;
+  width:60;
+  height: 30px;
+  
+  
+}

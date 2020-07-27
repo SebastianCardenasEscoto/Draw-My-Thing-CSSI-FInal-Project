@@ -1,4 +1,6 @@
-/*createCanvas, io.connect, background, ellipse,*/
+/*createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY*/
+
+const SPACEBAR = 32;
 
 let socket;
 // let pScore;
@@ -14,12 +16,15 @@ function setup(){
 function draw(){
   // Background for the web page.
   if(mouseIsPressed){
+    stroke('white');
+    strokeWeight(20);
     line(mouseX,mouseY,pmouseX,pmouseY);
   }
   
 }
 
-
-// pScore = function() {
-
-//};
+function keyPressed(){
+  if(keyCode == SPACEBAR){
+    background(51);
+  }
+}

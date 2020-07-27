@@ -5,7 +5,7 @@ let socket;
 
 function setup(){
   let cnv = createCanvas(400,400);
-  cnv.center()
+  cnv.center();
   socket = io.connect('http://localhost:3000');
 }
 

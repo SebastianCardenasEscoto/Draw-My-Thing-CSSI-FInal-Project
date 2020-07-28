@@ -20,8 +20,7 @@ function setup(){
  
   socket.on("mouse", (otherPersonMouse) => {
     drawLine(otherPersonMouse.x, otherPersonMouse.y,
-                     otherPersonMouse.px, otherPersonMouse.py);
-    console.log("yo waddup");
+                     otherPersonMouse.pX, otherPersonMouse.pY);
      });
 }
 

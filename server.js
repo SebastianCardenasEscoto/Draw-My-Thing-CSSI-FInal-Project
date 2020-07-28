@@ -26,9 +26,10 @@ const listener = app.listen(process.env.PORT, () => {
 
 var io = socket(listener);
 
-io.sockets.on('connection',newConnection); 
-
-function newConnection(socket){
+io.sockets.on('connection', (socket) =>{
   console.log('new connection: ' + socket.id);
-  users.pop(socket.id);
-}
+  users.push(socket.id);
+});
+// io.sockets.on('disconnect',disconnection);
+
+

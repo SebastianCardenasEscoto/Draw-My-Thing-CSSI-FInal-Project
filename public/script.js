@@ -5,13 +5,17 @@ let img;
 let socket;
 // let pScore;
 
+function preload() {
+  img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Fpaintbrush.png?v=1595894948932');
+}
+
 function setup(){
   let cnv = createCanvas(400,400);
   cnv.center();
   socket = io.connect();
   background(51);
   noStroke();
-  image(img, 0, 0);
+  // image(img, 200, 200);
 }
 
 function draw(){
@@ -34,6 +38,9 @@ function keyPressed(){
 
 // it might be useful to make one of these 
 class PaintBrush{
-  
+  constructor(){
+    this.color;
+    this.mode;
+    this.strokeWidth;
+  }
 }
-

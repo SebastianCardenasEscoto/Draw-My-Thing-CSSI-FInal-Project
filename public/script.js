@@ -18,14 +18,18 @@ function setup(){
   socket = io.connect();
   background(51);
   noStroke();
-  x= 200;
-  y = 200
+  x= 30;
+  y = 120;
+  w = 120;
+  h = 100;
   // image(img, 200, 200);
 }
 
 function draw(){
+  fill("red");
+  noStroke();
+  rect(x,y,w,h);
   
-  rect(30,60,40,60)
   
   
   

@@ -30,23 +30,20 @@ var io = socket(listener);
 io.sockets.on('connection', (socket) =>{
   console.log('new connection: ' + socket.id);
   users.push(socket.id);
+  console.log(users);
 });
 
 // runs when user disconnects
-io.sockets.on('disconnect', (socket)=>{
-  let user = userLeave(socket.id);
+io.sockets.on('disconnect', ()=>{
   
-  if(user){
-    console.log(`${socket.id} left`);
-  }
 });
 
 
 function userLeave(id){
-  let index = users.findIndex(user => user.id === id);
+  let index = users.findIndex(user => user === id);
   
   if(index !== -1){
-    return users.splice(index,1);
+    return users.splice(index,1)[0];
   }
 }
 

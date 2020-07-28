@@ -47,23 +47,6 @@ function draw()  {
   
   
   
-    
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   // Background for the web page.
   if(mouseIsPressed){

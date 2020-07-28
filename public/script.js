@@ -18,20 +18,26 @@ function setup(){
   background(51);
   noStroke();
  
-
+  socket.on("mouse", (otherPersonMouse) => {
+    drawLine(otherPersonMouse.x, otherPersonMouse.y,
+                     otherPersonMouse.px, otherPersonMouse.py);
+    console.log("yo waddup");
+     });
 }
 
 function draw()  {
 
   if(mouseIsPressed){
-    stroke('white');
-    strokeWeight(10);
-    line(mouseX,mouseY,pmouseX,pmouseY);
     
     let mousePosition = {
       x: mouseX,
-      y: mouseY
+      y: mouseY,
+      pX: pmouseX,
+      pY: pmouseY
     };
+    
+    drawLine(mouseX,mouseY,pmouseX,pmouseY);
+    
     
     socket.emit("mouse", mousePosition);
   }
@@ -64,3 +70,10 @@ guessForm.addEventListener("submit", (e)=>{
   e.target.elements.msg.value = '';
   e.target.elements.msg.focus();
 });
+
+
+function drawLine(x,y,px,py){
+    stroke('white');
+    strokeWeight(10);
+    line(x,y,px,py);
+}

@@ -17,8 +17,8 @@ function setup(){
   socket = io.connect();
   background(51);
   noStroke();
-  // colorPicker = createColorPicker('#ed225d');
-  // colorPicker.position(0, height + 5);
+  colorPicker = createColorPicker('#ed225d');
+  colorPicker.position(0, height + 5);
   //commented them out just to show something working during standup
  
   socket.on("mouse", (otherPersonMouse) => {

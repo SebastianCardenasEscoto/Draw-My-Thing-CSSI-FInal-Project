@@ -13,7 +13,7 @@ function setup(){
   
   // javascript working space
   let canv = createCanvas(400,400);
-  canv.center();
+  canv.parent('sketch-div');
   socket = io.connect();
   background(51);
   noStroke();

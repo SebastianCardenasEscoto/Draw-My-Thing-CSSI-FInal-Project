@@ -10,6 +10,7 @@ body {
   line-height: 1.5em;
   display:flex;
   justify-content: center;
+  align-items:center;
 }
 
 h1 {
@@ -95,4 +96,10 @@ footer {
   color: white;
   float: right;
   mergin-top: 200px;
+}
+
+#sketch-div{
+  width:400;
+  height:400;
+  background-color: blue;
 }

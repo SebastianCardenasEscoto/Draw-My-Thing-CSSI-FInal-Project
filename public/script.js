@@ -27,9 +27,15 @@ function setup(){
 
 function draw()  {
   
-  fill("red");
+  
+  function waitingPage()  {
+  fill("lightBlue");
   noStroke();
   rect(x,y,w,h,20);
+  }
+  
+    
+  
 
   
   

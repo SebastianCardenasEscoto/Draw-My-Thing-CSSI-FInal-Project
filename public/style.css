@@ -67,30 +67,3 @@ footer {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-
-.container  {
-  
-}
-
-.btn1 {
-  background-color: lightBlue; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
-.btn2  {
- background-color: lightBlue; 
-  color: black; 
-  border: 2px solid #4CAF50;
-}
-
-.btn1:hover {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.btn2:hover {
-  background-color: #008CBA;
-  color: white;
-  float: right;
-  mergin-top: 200px;
-}

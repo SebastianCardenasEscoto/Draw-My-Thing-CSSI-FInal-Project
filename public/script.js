@@ -1,9 +1,10 @@
-/*createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY*/
+/*createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY, createCanvas, background*/
 
 const SPACEBAR = 32;
 let img  , i;
 let socket;
 let x,y,w,h;
+let guesserForm = document.getElementbById('guesserForm');
 
 // importimg image
 function preload() {
@@ -45,9 +46,6 @@ function draw()  {
   image(img, 45, 60, 40, 40);
   
   
-  
-  
-  
   // Background for the web page.
   if(mouseIsPressed){
     stroke('white');
@@ -62,7 +60,6 @@ function keyPressed(){
     background(51);
   }
   
-  
 }
 
 // it might be useful to make one of these 
@@ -73,3 +70,13 @@ class PaintBrush{
     this.strokeWidth;
   }
 }
+
+//Listen for guesses
+
+guesserForm.addEventListener('submit', (e) =>{
+  e.preventDefault();
+  
+  let msg = e.target.elemets.msg.value;
+  
+  socket.emit('guess',msg);
+});

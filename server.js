@@ -28,9 +28,11 @@ var io = socket(listener);
 
 // runs when new user connects
 io.sockets.on('connection', (socket) =>{
-  console.log('new connection: ' + socket.id);
+  // console.log('new connection: ' + socket.id);
   users.push(socket.id);
-  console.log(users);
+  // console.log(users);
+  
+  socket.on('guess', msg => console.log(msg));
 });
 
 // runs when user disconnects

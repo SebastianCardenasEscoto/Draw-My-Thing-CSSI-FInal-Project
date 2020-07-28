@@ -22,11 +22,14 @@ function setup(){
   wy = 40;
   ww = 120;
   wh = 110;
-  
+ // create a tex box  
 textSize(15);
+ // text color
 fill("white");
+// the actual text
 text('Waiting for players...', 10, 30);
   
+// where the image is going to be placed on the screen
   img.loadPixels();
   i  = img.get(img.width / 2, img.height / 2);
 }
@@ -34,7 +37,7 @@ text('Waiting for players...', 10, 30);
 function draw()  {
 // The created rectangle properties
   fill(13, 115, 105);
-  stroke(1);
+  noStroke();
   rect(wx,wy,ww,wh,20);
   
   // The Imported image background
@@ -70,7 +73,7 @@ function draw()  {
   }
   
 }
-
+// whenever the spacebar key is pressed the screen changes the background color     
 function keyPressed(){
   if(keyCode == SPACEBAR){
     background(51);

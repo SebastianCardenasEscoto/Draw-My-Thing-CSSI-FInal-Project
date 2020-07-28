@@ -10,8 +10,8 @@ function preload() {
 }
 
 function setup(){
-  let cnv = createCanvas(400,400);
-  cnv.center();
+  let canv = createCanvas(400,400);
+  canv.center();
   socket = io.connect();
   background(51);
   noStroke();

@@ -26,10 +26,27 @@ const listener = app.listen(process.env.PORT, () => {
 
 var io = socket(listener);
 
+// runs when new user connects
 io.sockets.on('connection', (socket) =>{
   console.log('new connection: ' + socket.id);
   users.push(socket.id);
 });
-// io.sockets.on('disconnect',disconnection);
 
+// runs when user disconnects
+io.sockets.on('disconnect', (socket)=>{
+  let user = userLeave(socket.id);
+  
+  if(user){
+    console.log(`${socket.id} left`);
+  }
+});
+
+
+function userLeave(id){
+  let index = users.findIndex(user => user.id === id);
+  
+  if(index !== -1){
+    return users.splice(index,1);
+  }
+}
 

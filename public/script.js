@@ -25,10 +25,12 @@ function setup(){
   // image(img, 200, 200);
 }
 
-function draw(){
+function draw()  {
+  
   fill("red");
   noStroke();
-  rect(x,y,w,h);
+  rect(x,y,w,h,20);
+
   
   
   

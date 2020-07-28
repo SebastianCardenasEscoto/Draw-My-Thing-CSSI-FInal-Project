@@ -4,7 +4,7 @@ const SPACEBAR = 32;
 let img  , i;
 let socket;
 let x,y,w,h;
-let guesserForm = document.getElementbById('guesserForm');
+let guesserForm = document.getElementById('guesserForm');
 
 // importimg image
 function preload() {
@@ -76,7 +76,7 @@ class PaintBrush{
 guesserForm.addEventListener('submit', (e) =>{
   e.preventDefault();
   
-  let msg = e.target.elemets.msg.value;
+  let msg = e.target.elements.msg.value;
   
   socket.emit('guess',msg);
 });

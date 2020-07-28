@@ -18,21 +18,20 @@ function setup(){
   socket = io.connect();
   background(51);
   noStroke();
-  x= 30;
-  y = 120;
-  w = 120;
-  h = 100;
+  x= 30, 60;
+  y = 120,200;
+  w = 120, 120;
+  h = 100, 100;
   // image(img, 200, 200);
 }
 
 function draw()  {
-  
-  
-  function waitingPage()  {
+
   fill("lightBlue");
   noStroke();
   rect(x,y,w,h,20);
-  }
+
+  
   
     
   

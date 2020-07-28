@@ -1,11 +1,11 @@
 /*createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY*/
 
 const SPACEBAR = 32;
-let img;
+let img  , i;
 let socket;
 let x,y,w,h;
-// let pScore;
 
+// importimg image
 function preload() {
   img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Fpaintbrush.png?v=1595894948932');
 }
@@ -29,8 +29,8 @@ function setup(){
 
 function draw()  {
 
-  fill("black");
-  noStroke();
+  fill(13, 115, 105);
+  stroke(1);
   rect(wx,wy,ww,wh,20);
   
   

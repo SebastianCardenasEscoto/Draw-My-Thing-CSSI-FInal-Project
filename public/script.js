@@ -3,6 +3,7 @@
 const SPACEBAR = 32;
 let img;
 let socket;
+let x,y,w,h;
 // let pScore;
 
 function preload() {
@@ -10,15 +11,35 @@ function preload() {
 }
 
 function setup(){
+  
+  // javascript working space
   let canv = createCanvas(400,400);
   canv.center();
   socket = io.connect();
   background(51);
   noStroke();
+  x= 200;
+  y = 200
   // image(img, 200, 200);
 }
 
 function draw(){
+  
+  rect(30,60,40,60)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   // Background for the web page.
   if(mouseIsPressed){
     stroke('white');

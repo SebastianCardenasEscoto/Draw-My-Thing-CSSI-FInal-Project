@@ -29,7 +29,7 @@ function setup(){
 
 function draw()  {
 
-  fill("lightBlue");
+  fill("black");
   noStroke();
   rect(wx,wy,ww,wh,20);
   

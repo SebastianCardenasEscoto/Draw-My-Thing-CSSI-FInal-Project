@@ -7,7 +7,7 @@ let x,y,w,h;
 
 // importimg image
 function preload() {
-  img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Fpaintbrush.png?v=1595894948932');
+  img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Fheart.png?v=1595961536085');
 }
 
 function setup(){
@@ -18,23 +18,28 @@ function setup(){
   socket = io.connect();
   background(51);
   noStroke();
-  wx= 10 ;        
-  wy = 30;
+  wx= 30 ;        
+  wy = 40;
   ww = 120;
   wh = 110;
   
+textSize(15);
+fill("white");
+text('Waiting for players...', 10, 30);
   
-  // image(img, 200, 200);
+  img.loadPixels();
+  i  = img.get(img.width / 2, img.height / 2);
 }
 
 function draw()  {
-
+// The created rectangle properties
   fill(13, 115, 105);
   stroke(1);
   rect(wx,wy,ww,wh,20);
   
-  
-  
+  // The Imported image background
+  background(i);
+  image(img, 45, 60, 40, 40);
   
   
   

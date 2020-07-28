@@ -18,10 +18,12 @@ function setup(){
   socket = io.connect();
   background(51);
   noStroke();
-  x= 30, 60;
-  y = 120,200;
-  w = 120, 120;
-  h = 100, 100;
+  wx= 10 ;        
+  wy = 30;
+  ww = 120;
+  wh = 110;
+  
+  
   // image(img, 200, 200);
 }
 
@@ -29,8 +31,12 @@ function draw()  {
 
   fill("lightBlue");
   noStroke();
-  rect(x,y,w,h,20);
-
+  rect(wx,wy,ww,wh,20);
+  
+  
+  
+  
+  
   
   
     

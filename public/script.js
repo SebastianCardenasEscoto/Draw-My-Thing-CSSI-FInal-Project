@@ -1,8 +1,8 @@
 /*global createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY, io, noStroke, keyCode,
-mouseIsPressed, stroke, strokeWeight*/
+mouseIsPressed, stroke, strokeWeight, createColorPicker*/
 
 const SPACEBAR = 32;
-let img ;
+let colorPicker;
 let socket;
 let guessForm = document.getElementById("guessForm");
 
@@ -17,6 +17,9 @@ function setup(){
   socket = io.connect();
   background(51);
   noStroke();
+  // colorPicker = createColorPicker('#ed225d');
+  // colorPicker.position(0, height + 5);
+  //commented them out just to show something working during standup
  
   socket.on("mouse", (otherPersonMouse) => {
     drawLine(otherPersonMouse.x, otherPersonMouse.y,
@@ -26,6 +29,8 @@ function setup(){
 
 function draw()  {
 
+  // background(colorPicker.color());
+  
   if(mouseIsPressed){
     
     let mousePosition = {

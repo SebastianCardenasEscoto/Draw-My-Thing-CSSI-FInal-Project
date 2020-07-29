@@ -2,6 +2,7 @@
 mouseIsPressed, stroke, strokeWeight, createColorPicker*/
 
 const SPACEBAR = 32;
+let backgroundColor = 51;
 let colorPicker;
 let socket;
 let guessForm = document.getElementById("guessForm");
@@ -15,10 +16,10 @@ function setup(){
   let canv = createCanvas(400,400);
   canv.parent('sketch-div');
   socket = io.connect();
-  background(51);
+  background(backgroundColor);
   noStroke();
   colorPicker = createColorPicker('#ed225d');
-  colorPicker.position(0, height + 5);
+  colorPicker.parent("color-picker");
   //commented them out just to show something working during standup
  
   socket.on("mouse", (otherPersonMouse) => {
@@ -28,7 +29,11 @@ function setup(){
 }
 
 function draw()  {
-
+  // This fucntion allows the background to change to whatever color is selected.
+  if(backgroundColor != colorPicker.color()){
+    backgroundColor = colorPicker.color();
+    background(backgroundColor);
+  }
   // background(colorPicker.color());
   
   if(mouseIsPressed){

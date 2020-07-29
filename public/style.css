@@ -5,6 +5,7 @@
 }
 
 body {
+  background-color:lightBlue;
   font-family: sans-serif;
   margin: 2em 1em;
   line-height: 1.5em;
@@ -89,5 +90,6 @@ h2  {
   text-align: center;
   height: 47px;
   background-color: red; /* For browsers that do not support gradients */
-  background-image: linear-gradient(red, yellow); /* Standard syntax (must be last) */
+  background-image: linear-gradient(lightblue, lightblue); /* Standard syntax (must be last) */
+  padding: 2px;
 }

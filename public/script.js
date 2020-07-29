@@ -2,6 +2,10 @@
 mouseIsPressed, stroke, strokeWeight, createColorPicker, fill*/
 
 const SPACEBAR = 32;
+// const username = Qs.parse(location.search,{
+//   ignoreQueryPrefix: true
+// });
+
 let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
@@ -12,6 +16,7 @@ let colorPicker, paintbrush, socket,canv, isPlayerActive = true;
 function setup(){
   
   socket = io.connect();
+  // socket.emit('playerJoin',{username});
   // javascript working space
   canv = createCanvas(400,400);
   canv.parent('sketch-div');

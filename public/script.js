@@ -1,21 +1,12 @@
 /*global createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY, io, noStroke, keyCode,
-mouseIsPressed, stroke, strokeWeight, createColorPicker*/
+mouseIsPressed, stroke, strokeWeight, createColorPicker, fill*/
 
 const SPACEBAR = 32;
 let backgroundColor = 51;
-let colorPicker;
-let socket,canv;
-let guessForm = document.getElementById("guessForm");
 let drawingForm = document.getElementById("sketch-div");
-var timeleft = 90;
-var startTime = 0;
-var currentTime = 0;
-var min = floor(s / 60);
-var sec = s % 60;
-var params = getURLParams();
-var min = params.minute;
-var timer = select('#timer');
-var interval = setInterval(timeIt, 1000);
+let guessForm = document.getElementById("guessForm");
+
+let colorPicker, paintbrush, socket,canv;
 
 
 
@@ -25,6 +16,7 @@ function setup(){
   canv = createCanvas(400,400);
   canv.parent('sketch-div');
   socket = io.connect();
+  paintbrush = new PaintBrush;
   // background(backgroundColor);
   noStroke();
   colorPicker = createColorPicker('#ed225d');
@@ -35,6 +27,7 @@ function setup(){
     drawLine(otherPersonMouse.x, otherPersonMouse.y,
                      otherPersonMouse.pX, otherPersonMouse.pY);
      });
+  
 }
 
 function draw()  {
@@ -71,12 +64,24 @@ function keyPressed(){
 // it might be useful to make one of these 
 class PaintBrush{
   constructor(){
-    this.color;
-    this.mode;
-    this.strokeWidth;
+    this.color = "white";
+    this.mode = "LINE";
+    this.strokeWidth = 10;
   }
   
+  draw(){
+    stroke(this.color);
+    fill(this.color);
+    strokeWeight(this.strokeWeight);
+    
+    if(this.mode = "LINE"){
+      this.drawLine();
+    }
+  }
   
+  drawLine(){
+    line(mouseX,mouseY,pmouseX,pmouseY);
+  }
 }
 
 guessForm.addEventListener("submit", (e)=>{

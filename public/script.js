@@ -6,7 +6,7 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket,canv;
+let colorPicker, paintbrush, socket,canv, isPlayerActive = false;
 
 
 function setup(){
@@ -72,7 +72,7 @@ class PaintBrush{
     fill(this.color);
     strokeWeight(this.strokeWeight);
     
-    if(this.mode = "LINE"){
+    if(this.mode == "LINE"){
       this.drawLine();
     }
   }

@@ -16,7 +16,13 @@ app.use(express.static("public"));
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html");
+  if(users.length < 2){
+    
+    response.sendFile(__dirname + "/views/index.html");
+  
+  } else{
+    response.sendFile(__dirname + "/views/drawer.html");
+  }
 });
 
 // listen for requests :)

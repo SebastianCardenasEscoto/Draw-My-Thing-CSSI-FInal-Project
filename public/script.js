@@ -6,7 +6,7 @@ let backgroundColor = 51;
 let colorPicker;
 let socket;
 let guessForm = document.getElementById("guessForm");
-
+let drawingForm = document.getElementById("sketch-div");
 // importimg image
 
 
@@ -16,7 +16,7 @@ function setup(){
   let canv = createCanvas(400,400);
   canv.parent('sketch-div');
   socket = io.connect();
-  background(backgroundColor);
+  // background(backgroundColor);
   noStroke();
   colorPicker = createColorPicker('#ed225d');
   colorPicker.parent("color-picker");
@@ -30,11 +30,7 @@ function setup(){
 
 function draw()  {
   // This fucntion allows the background to change to whatever color is selected.
-  if(backgroundColor != colorPicker.color()){
-    backgroundColor = colorPicker.color();
-    background(backgroundColor);
-  }
-  // background(colorPicker.color());
+  drawingForm.style.backgroundColor = colorPicker.color();
   
   if(mouseIsPressed){
     

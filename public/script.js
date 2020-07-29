@@ -12,7 +12,6 @@ var startTime = 0;
 var currentTime = 0;
 var min = floor(s / 60);
 var sec = s % 60;
-var ding;
 var params = getURLParams();
 var min = params.minute;
 var timer = select('#timer');
@@ -40,12 +39,6 @@ function setup(){
 }
 
 function draw()  {
-
-  
-  
-  
-  
-  
   // This fucntion allows the background to change to whatever color is selected.\
   if(backgroundColor != colorPicker.color()) backgroundColor = colorPicker.color();
   drawingForm.style.backgroundColor = backgroundColor;
@@ -83,6 +76,35 @@ class PaintBrush{
     this.strokeWidth;
   }
 }
+
+ function convertSeconds(s) {
+  var min = floor(s / 60);
+  var sec = s % 60;
+  return nf(min, 2) + ':' + nf(sec, 2);
+}
+
+ var params = getURLParams();
+  console.log(params);
+  if (params.minute) {
+    var min = params.minute;
+    timeleft = min * 60;
+  }
+
+timer.html(convertSeconds(timeleft - currentTime));
+
+ function timeIt() {
+    currentTime = floor((millis() - startTime) / 1000);
+    timer.html(convertSeconds(timeleft - currentTime));
+    if (currentTime == timeleft) {
+      clearInterval(interval);
+      //counter = 0;
+    }
+  }
+  
+
+
+
+
 
 guessForm.addEventListener("submit", (e)=>{
   e.preventDefault();

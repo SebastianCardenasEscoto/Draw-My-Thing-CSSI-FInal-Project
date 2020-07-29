@@ -75,6 +75,8 @@ class PaintBrush{
     this.mode;
     this.strokeWidth;
   }
+  
+  
 }
 
 guessForm.addEventListener("submit", (e)=>{

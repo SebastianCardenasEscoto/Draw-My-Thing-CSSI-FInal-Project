@@ -8,16 +8,16 @@ const app = express();
 const socket = require('socket.io');
 let users = [];
 
-// our default array of dreams
+
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
+app.use(express.static("views"));
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {   
     response.sendFile(__dirname + "/views/landing.html");
-
 });
 
 // listen for requests :)

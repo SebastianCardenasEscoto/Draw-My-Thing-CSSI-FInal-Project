@@ -11,21 +11,23 @@ let colorPicker, paintbrush, socket,canv;
 
 function setup(){
   
+  socket = io.connect();
   // javascript working space
   canv = createCanvas(400,400);
   canv.parent('sketch-div');
-  socket = io.connect();
+  
   paintbrush = new PaintBrush;
+  
   // background(backgroundColor);
   noStroke();
   colorPicker = createColorPicker('#ed225d');
   colorPicker.parent("color-picker");
-  //commented them out just to show something working during standup
+  
  
   socket.on("mouse", (otherPersonMouse) => {
     drawLine(otherPersonMouse.x, otherPersonMouse.y,
                      otherPersonMouse.pX, otherPersonMouse.pY);
-     });oc
+     });
 
 function draw()  {
   // This fucntion allows the background to change to whatever color is selected.\

@@ -4,7 +4,7 @@ mouseIsPressed, stroke, strokeWeight, createColorPicker*/
 const SPACEBAR = 32;
 let backgroundColor = 51;
 let colorPicker;
-let socket;
+let socket,canv;
 let guessForm = document.getElementById("guessForm");
 let drawingForm = document.getElementById("sketch-div");
 var timeleft = 90;
@@ -17,13 +17,12 @@ var min = params.minute;
 var timer = select('#timer');
 var interval = setInterval(timeIt, 1000);
 
-// importimg image
 
 
 function setup(){
   
   // javascript working space
-  let canv = createCanvas(400,400);
+  canv = createCanvas(400,400);
   canv.parent('sketch-div');
   socket = io.connect();
   // background(backgroundColor);
@@ -62,7 +61,8 @@ function draw()  {
 // whenever the spacebar key is pressed the screen changes the background color     
 function keyPressed(){
   if(keyCode == SPACEBAR){
-    background(backgroundColor);
+    canv = createCanvas(400,400);
+    canv.center;
   }
   
   

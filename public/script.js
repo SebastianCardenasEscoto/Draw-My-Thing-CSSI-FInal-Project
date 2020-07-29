@@ -9,7 +9,6 @@ let guessForm = document.getElementById("guessForm");
 let colorPicker, paintbrush, socket,canv;
 
 
-
 function setup(){
   
   // javascript working space
@@ -26,9 +25,7 @@ function setup(){
   socket.on("mouse", (otherPersonMouse) => {
     drawLine(otherPersonMouse.x, otherPersonMouse.y,
                      otherPersonMouse.pX, otherPersonMouse.pY);
-     });
-  
-}
+     });oc
 
 function draw()  {
   // This fucntion allows the background to change to whatever color is selected.\
@@ -44,8 +41,7 @@ function draw()  {
       pY: pmouseY
     };
     
-    drawLine(mouseX,mouseY,pmouseX,pmouseY);
-    
+    paintbrush.draw();
     
     socket.emit("mouse", mousePosition);
   }

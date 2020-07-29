@@ -52,3 +52,8 @@ function userLeave(id){
   }
 }
 
+class Player{
+  constructor(){
+    
+  }
+}

@@ -62,7 +62,7 @@ function draw()  {
 function keyPressed(){
   if(keyCode == SPACEBAR){
     canv = createCanvas(400,400);
-    canv.center;
+    canv.parent("sketch-div");
   }
   
   

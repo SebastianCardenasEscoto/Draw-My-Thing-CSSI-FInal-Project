@@ -30,6 +30,7 @@ var io = socket(listener);
 io.sockets.on('connection', (socket) =>{
   users.push(socket.id);
   
+  
   socket.on("guess", msg => console.log(msg));
   
   socket.on("mouse", (mousePosition)=>{ 
@@ -55,7 +56,7 @@ function userLeave(id){
 }
 
 class Player{
-  constructor(id){
+  constructor(id, username){
     this.id = id;
     this.score = 0;
     this.active = false;

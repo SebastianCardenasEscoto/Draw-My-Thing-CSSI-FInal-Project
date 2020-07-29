@@ -15,14 +15,9 @@ let users = [];
 app.use(express.static("public"));
 
 // https://expressjs.com/en/starter/basic-routing.html
-app.get("/", (request, response) => {
-  if(users.length < 2){
-    
-    response.sendFile(__dirname + "/views/index.html");
-  
-  } else{
-    response.sendFile(__dirname + "/views/drawer.html");
-  }
+app.get("/", (request, response) => {   
+    response.sendFile(__dirname + "/views/landing.html");
+
 });
 
 // listen for requests :)
@@ -59,7 +54,9 @@ function userLeave(id){
 }
 
 class Player{
-  constructor(){
-    
+  constructor(id){
+    this.id = id;
+    this.score = 0;
+    this.active = false;
   }
 }

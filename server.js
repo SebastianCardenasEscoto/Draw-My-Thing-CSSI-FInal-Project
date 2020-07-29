@@ -36,12 +36,14 @@ io.sockets.on('connection', (socket) =>{
     console.log(mousePosition);
     socket.broadcast.emit("mouse", mousePosition);
   });
+  
+  socket.on('disconnect', ()=>{
+    console.log(`${socket.id} has left the chat`);
+  });
+  
 });
 
 // runs when user disconnects
-io.sockets.on('disconnect', ()=>{
-  
-});
 
 
 function userLeave(id){

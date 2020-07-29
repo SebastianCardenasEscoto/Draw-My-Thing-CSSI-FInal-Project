@@ -6,7 +6,7 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket,canv, isPlayerActive = false;
+let colorPicker, paintbrush, socket,canv, isPlayerActive = true;
 
 
 function setup(){
@@ -44,9 +44,12 @@ function draw()  {
       pY: pmouseY
     };
     
+    if(isPlayerActive){
+      
     paintbrush.draw();
-    
     socket.emit("mouse", mousePosition);
+      
+    }
   }
   
 }

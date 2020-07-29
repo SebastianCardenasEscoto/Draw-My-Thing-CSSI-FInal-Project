@@ -9,7 +9,6 @@ const socket = require('socket.io');
 let users = [];
 
 
-
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));

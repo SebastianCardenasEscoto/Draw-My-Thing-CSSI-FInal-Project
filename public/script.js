@@ -28,6 +28,7 @@ function setup(){
     drawLine(otherPersonMouse.x, otherPersonMouse.y,
                      otherPersonMouse.pX, otherPersonMouse.pY);
      });
+  }
 
 function draw()  {
   // This fucntion allows the background to change to whatever color is selected.\
@@ -64,7 +65,7 @@ class PaintBrush{
   constructor(){
     this.color = "white";
     this.mode = "LINE";
-    this.strokeWidth = 10;
+    this.strokeWeight = 10;
   }
   
   draw(){

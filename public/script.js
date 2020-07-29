@@ -114,3 +114,6 @@ function drawLine(x,y,px,py){
 
 
 
+function eraserBrush  {
+  
+}

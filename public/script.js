@@ -1,28 +1,32 @@
 /*global createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY, io, noStroke, keyCode,
-mouseIsPressed, stroke, strokeWeight, createColorPicker, fill*/
+mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs*/
 
 const SPACEBAR = 32;
-// const username = Qs.parse(location.search,{
-//   ignoreQueryPrefix: true
-// });
+const username = Qs.parse(location.search,{
+   ignoreQueryPrefix: true
+ });
 
 let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket,canv, isPlayerActive = true;
+let colorPicker, paintbrush, socket, canv, isPlayerActive = true;
 
+
+function preload(){
+  socket = io.connect();
+}
 
 function setup(){
   
-  socket = io.connect();
-  // socket.emit('playerJoin',{username});
+  
   // javascript working space
   canv = createCanvas(400,400);
   canv.parent('sketch-div');
   
   paintbrush = new PaintBrush;
   
+  socket.emit('playerJoin',username);
   // background(backgroundColor);
   noStroke();
   colorPicker = createColorPicker('#ed225d');

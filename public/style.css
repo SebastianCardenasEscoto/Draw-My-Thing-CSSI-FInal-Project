@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color:lightBlue;
+  background-color:rgba(41, 49, 79.1);
   font-family: sans-serif;
   margin: 2em 1em;
   line-height: 1.5em;
@@ -17,11 +17,12 @@ body {
 h1 {
   font-style: italic;
   max-width: calc(100% - 5rem);
-  line-height: 1.1;
+  line-height: 49px;
+  padding: 5px;
 }
 
 form {
-  background-color: #eee;
+  background-color: lightblue;
   display: grid;
   grid-gap: 1em;
   padding: 1em;
@@ -87,9 +88,7 @@ footer {
 }
 
 h2  {
+  color:white;
   text-align: center;
-  height: 47px;
-  background-color: red; /* For browsers that do not support gradients */
-  background-image: linear-gradient(lightblue, lightblue); /* Standard syntax (must be last) */
-  padding: 2px;
+  text-shadow: 1px 1px 10px blue;
 }

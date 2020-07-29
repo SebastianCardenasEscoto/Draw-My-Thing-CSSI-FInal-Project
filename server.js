@@ -6,7 +6,7 @@
 const express = require("express");
 const app = express();
 const socket = require('socket.io');
-let users = [];
+let users = []; let players = [];
 
 
 // make all the files in 'public' available
@@ -30,6 +30,10 @@ var io = socket(listener);
 io.sockets.on('connection', (socket) =>{
   users.push(socket.id);
   
+  socket.on("playerJoin", username => {
+    players.push(new Player(socket.id,username));
+    console.log(players);
+  });
   
   socket.on("guess", msg => console.log(msg));
   

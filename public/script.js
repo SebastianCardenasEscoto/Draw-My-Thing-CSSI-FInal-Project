@@ -29,8 +29,9 @@ function setup(){
 }
 
 function draw()  {
-  // This fucntion allows the background to change to whatever color is selected.
-  drawingForm.style.backgroundColor = colorPicker.color();
+  // This fucntion allows the background to change to whatever color is selected.\
+  if(backgroundColor != colorPicker.color()) backgroundColor = colorPicker.color();
+  drawingForm.style.backgroundColor = backgroundColor;
   
   if(mouseIsPressed){
     
@@ -51,7 +52,7 @@ function draw()  {
 // whenever the spacebar key is pressed the screen changes the background color     
 function keyPressed(){
   if(keyCode == SPACEBAR){
-    background(51);
+    background(backgroundColor);
   }
   
   

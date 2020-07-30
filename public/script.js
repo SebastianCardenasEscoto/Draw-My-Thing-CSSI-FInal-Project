@@ -11,11 +11,16 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket, canv, isPlayerActive = true, gameStart, previousBackground;
-let img, img1;
+let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart, previousBackground;
+let img, img2;
 let r , c;
 socket = io.connect();
 
+ function preload() {
+   // preload() runs once
+   img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Frect00.png?v=1596119775652');
+   img2 = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Fcircle-xxl.png?v=1596119912434')
+ }
 
 function setup(){
   
@@ -30,6 +35,10 @@ function setup(){
   socket.on("clearCanv", ()=>{
      resetCanv();
   });
+  
+  socket.on("redirect", ()=> )
+  
+  socket.on("active", (activity) => isPlayerActive = activity);
   
   socket.on("backgroundColor", (apBackgroundColor) => updateBackground(apBackgroundColor));
   
@@ -53,8 +62,8 @@ function setup(){
 
 function draw()  {
 
-  image(img, 7,8,41,20);
-  image(img2,60,10,20,20);
+  // image(img, 7,8,41,20);
+  // image(img2,60,10,20,20);
   
   // This fucntion allows the background to change to whatever color is selected.\
   if(isPlayerActive){
@@ -173,15 +182,6 @@ guessForm.addEventListener("submit", (e)=>{
   e.target.elements.msg.focus();
 });
 
-
-function drawLine(x,y,px,py){
-    stroke('white');
-    strokeWeight(10);
-    line(x,y,px,py);
-}
-
-
-
 function switchUserPage()  {
   if(isPlayerActive == true){
     window.location.replace("drawer.html")
@@ -216,10 +216,4 @@ function mouseInCanvas(){
     return false;
   else
     return true;
-}
-
-function preload() {
-  // preload() runs once
-  img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Frect00.png?v=1596119775652');
-  img2 = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Fcircle-xxl.png?v=1596119912434')
 }

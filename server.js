@@ -42,7 +42,7 @@ io.sockets.on('connection', (socket) =>{
 
         players[activePlayerIndex].active = true;
 
-        socket.broadcast.emit("gameStart",gameStarted);
+        io.sockets.socket(players[activePlayerIndex].active).emit('active',true);
       }
     }
     
@@ -69,7 +69,7 @@ io.sockets.on('connection', (socket) =>{
   
 });
 
-// runs when user disconnects
+
 
 
 function userLeave(id){
@@ -87,6 +87,7 @@ function playerLeave(id){
     return users.splice(index,1)[0];
   }
 }
+
 
 class Player{
   constructor(id, username){

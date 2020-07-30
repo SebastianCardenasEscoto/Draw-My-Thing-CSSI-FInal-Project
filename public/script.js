@@ -25,7 +25,10 @@ function setup(){
   canv = createCanvas(400,400);
   canv.parent('sketch-div');
   
-  socket.on()
+  socket.on("clearCanv", ()=>{
+    canv = createCanvas(400,400);
+    canv.parent("sketch-div");
+  });
   
 
   paintbrush = new PaintBrush;
@@ -36,6 +39,12 @@ function setup(){
   colorPicker = createColorPicker('#ed225d');
   colorPicker.parent("color-picker");
   
+  socket.on("mouse", (drawerData) => {
+      let drawerBrush = new PaintBrush;
+      Object.assign(drawerBrush,drawerData);
+      console.log(drawerBrush);
+      drawerBrush.draw();
+     });
  
   }
 
@@ -44,12 +53,7 @@ function draw()  {
   if(backgroundColor != colorPicker.color()) backgroundColor = colorPicker.color();
   drawingForm.style.backgroundColor = backgroundColor;
   
-  socket.on("mouse", (drawerData) => {
-      let drawerBrush = new PaintBrush;
-      Object.assign(drawerBrush,drawerData);
-      console.log(drawerBrush);
-      drawerBrush.draw();
-     });
+  
   if(mouseIsPressed){
     
     let mousePosition = {
@@ -60,10 +64,11 @@ function draw()  {
     };
     
     if(isPlayerActive){
-      
+    
     paintbrush.draw();
+    paintbrush.position = mousePosition;
     socket.emit("mouse", paintbrush);
-      
+    paintbrush.position = null;
     }
   }
   
@@ -71,8 +76,10 @@ function draw()  {
 // whenever the spacebar key is pressed the screen changes the background color     
 function keyPressed(){
   if(keyCode == SPACEBAR){
-    canv = createCanvas(400,400);
-    canv.parent("sketch-div");
+    if(isPlayerActive){
+      resetCanv();
+      socket.emit("clearCanv");
+    }
   } else if (keyCode == CONTROL){
     paintbrush.isErasing = !paintbrush.isErasing;
   }
@@ -88,6 +95,8 @@ class PaintBrush{
     this.isErasing = false;
     this.strokeWeight = 10;
     this.squarePoints = null;
+    
+    this.position;
   }
   
   draw(){
@@ -105,10 +114,10 @@ class PaintBrush{
   }
   
   drawLine(){
-    if(this.x == null){
+    if(this.position == null){
     line(mouseX,mouseY,pmouseX,pmouseY);
     } else{
-      line(this.x,this.y,this.px,thispy);
+      line(this.position.x,this.position.y,this.position.pX,this.position.pY);
     }
   }
   
@@ -151,4 +160,8 @@ function switchUserPage()  {
     } else if(gameStart){
     window.location.replace("guesser.html")
     }
+}
+
+function resetCanv(){
+  
 }

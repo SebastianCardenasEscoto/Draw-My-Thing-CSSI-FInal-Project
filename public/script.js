@@ -74,23 +74,9 @@ function draw()  {
   if(isPlayerActive){
     if(backgroundColor != colorPicker.color()){
       updateBackground();
-      
-      if(previousBackground == null){
-        
-          previousBackground = backgroundColor;
-          console.log("I should run once");
-      
-      } else if(previousBackground === backgroundColor){
-        
-          socket.emit("backgroundColor",backgroundColor);
-          console.log("lmao");
-          previousBackground = null;
-        
-      } else 
-        previousBackground = backgroundColor;
-        console.log("i should run a few times")
-    } 
-    
+      socket.emit("backgroundColor",backgroundColor);  
+   
+    }
   }
 
   

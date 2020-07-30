@@ -43,7 +43,7 @@ io.sockets.on('connection', (socket) =>{
         activePlayerIndex = Math.floor( Math.random(0, players.length) );
         console.log(activePlayerIndex);
         players[activePlayerIndex].active = true;
-
+ 
         io.to(players[activePlayerIndex].id).emit('active',true);
         socket.broadcast.emit("redirct");
       }
@@ -69,6 +69,10 @@ io.sockets.on('connection', (socket) =>{
     userLeave(socket.id);
     playerLeave(socket.id);
     console.log(players);
+    if(players.length < 3){
+      gameStarted = false;
+    }
+    
   });
   
 });
@@ -81,20 +85,20 @@ if(gameStarted){
 function userLeave(id){
   let index = users.findIndex(user => user == id);
   
-  console.log(`disconnected user index: ${index}`);
   
   if(index !== -1){
-    return users.splice(index,1)[0];
+    users.splice(index,1);
+    
   }
 }
 
 function playerLeave(id){
   let index = players.findIndex(player => player.id == id);
   
-  console.log(`disconnected player index: ${index}`);
+
   
   if(index !== -1){
-    return users.splice(index,1)[0];
+    players.splice(index,1);
   }
 }
 

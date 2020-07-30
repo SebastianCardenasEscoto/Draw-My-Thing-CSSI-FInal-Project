@@ -54,7 +54,7 @@ function setup(){
 function draw()  {
 
   image(img, 7,8,41,20);
-  image(img2,90,30,20,20);
+  image(img2,60,10,20,20);
   
   // This fucntion allows the background to change to whatever color is selected.\
   if(isPlayerActive){

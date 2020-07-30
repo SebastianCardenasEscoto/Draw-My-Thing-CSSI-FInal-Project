@@ -46,10 +46,7 @@ function setup(){
   socket.on("active", (activity) => isPlayerActive = activity);
   
   socket.on("backgroundColor", (apBackgroundColor) => {
-    let bolor = new color;
-    Object.assign(bolor,apBackgroundColor);
-   console.log(bolor);
-   updateBackground(bolor); 
+   updateBackground(apBackgroundColor); 
   });
   
 

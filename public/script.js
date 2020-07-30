@@ -12,7 +12,13 @@ let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
 let colorPicker, paintbrush, socket, canv, isPlayerActive = true, gameStart, previousBackground;
-
+class rectangle  {
+  constructor
+  x: 200
+  y: 100
+  w: 50
+  l: 50
+}
 
 function preload(){
   socket = io.connect();
@@ -50,6 +56,12 @@ function setup(){
   }
 
 function draw()  {
+  
+  fill("white");
+  rect(rectangle.x, rectangle.y, rectangle.w, rectangle.l);
+  
+  
+  
   // This fucntion allows the background to change to whatever color is selected.\
   if(isPlayerActive){
     if(backgroundColor != colorPicker.color()){

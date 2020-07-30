@@ -36,6 +36,11 @@ function setup(){
      resetCanv();
   });
   
+  socket.on("gameStarted", ()=>{
+   switchUserPage();
+   gameStart= true;
+  });
+  
   socket.on("redirect", ()=> switchUserPage());
   
   socket.on("active", (activity) => isPlayerActive = activity);

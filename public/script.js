@@ -11,7 +11,7 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart = true;
+let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart;
 
 
 function preload(){
@@ -27,13 +27,9 @@ function setup(){
   canv = createCanvas(400,400);
   canv.parent('sketch-div');
   
+  socket.on()
   
-    if(isPlayerActive == true){
-    window.location.replace("drawer.html")
-    } else if(gameStart){
-    window.location.replace("guesser.html")
-    }
-  
+
   paintbrush = new PaintBrush;
   
   socket.emit('playerJoin',userName);
@@ -145,6 +141,10 @@ function drawLine(x,y,px,py){
 
 
 
-function eraserBrush()  {
-  
+function switchUserPage()  {
+  if(isPlayerActive == true){
+    window.location.replace("drawer.html")
+    } else if(gameStart){
+    window.location.replace("guesser.html")
+    }
 }

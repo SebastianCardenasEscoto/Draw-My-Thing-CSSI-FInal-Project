@@ -36,13 +36,16 @@ io.sockets.on('connection', (socket) =>{
     console.log(players);
     
     if(players.length > 2){
-      gameStarted = true;
-      activePlayerIndex = Math.floor( Math.random(0, players.length) );
-      
-      players[activePlayerIndex].active = true;
-      
-      socket.broadcast.emit("gameStart",gameStarted);
+      if(gameStarted == false){
+        gameStarted = true;
+        activePlayerIndex = Math.floor( Math.random(0, players.length) );
+
+        players[activePlayerIndex].active = true;
+
+        socket.broadcast.emit("gameStart",gameStarted);
+      }
     }
+    
   });
   
   socket.on("guess", msg => console.log(msg));

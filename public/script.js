@@ -16,6 +16,8 @@ let img, img2;
 let r , c;
 socket = io.connect();
 
+var interactiveField();
+
  function preload() {
    // preload() runs once
    img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Frect00.png?v=1596119775652');
@@ -37,7 +39,7 @@ function setup(){
   });
   
   socket.on("gameStarted", ()=>{
-   switchUserPage();
+   switchText();
    gameStart= true;
   });
   
@@ -46,6 +48,7 @@ function setup(){
   socket.on("active", (activity) => isPlayerActive = activity);
   
   socket.on("backgroundColor", (apBackgroundColor) => {
+    console.log(apBackgroundColor);
    updateBackground(apBackgroundColor); 
   });
   
@@ -172,11 +175,12 @@ guessForm.addEventListener("submit", (e)=>{
   e.target.elements.msg.focus();
 });
 
-function switchUserPage()  {
+function switchText()  {
+  let topText = document.getElementById('top-text');
   if(isPlayerActive == true){
-    window.location.replace("drawer.html")
-    } else if(gameStart){
-    window.location.replace("guesser.html")
+      topText.innerHtml = "You are the Drawer";
+    } else{
+      topText.innerHtml = "You are the Guesser";
     }
 }
 
@@ -191,7 +195,7 @@ function updateBackground(bgc){
     drawingForm.style.backgroundColor = backgroundColor;
   } else{
     backgroundColor = bgc;
-    drawingForm.style.backgroundColor = backgroundColor.toString();
+    drawingForm.style.backgroundColor = backgroundColor;
   }
 }
 

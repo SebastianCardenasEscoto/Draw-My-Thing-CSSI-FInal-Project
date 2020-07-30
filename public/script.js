@@ -81,6 +81,8 @@ class PaintBrush{
     this.mode = "LINE";
     this.isErasing = false;
     this.strokeWeight = 10;
+    
+    this.squarePoints = null;
   }
   
   draw(){
@@ -92,11 +94,20 @@ class PaintBrush{
     
     if(this.mode == "LINE"){
       this.drawLine();
+    } else if(this.mode == "SQAURE"){
+      this.drawSqaure
     }
   }
   
   drawLine(){
     line(mouseX,mouseY,pmouseX,pmouseY);
+  }
+  
+  drawSquare(){
+    if(this.squarePoints == null) this.squarePoints = {
+      x: mouseX,
+      y: mouseY
+    }; 
   }
 }
 

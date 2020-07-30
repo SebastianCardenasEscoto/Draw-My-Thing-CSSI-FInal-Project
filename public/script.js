@@ -1,5 +1,5 @@
 /*global createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY, io, noStroke, keyCode,
-mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs, erase,noErase, rect, CONTROL, SPACEBAR, width, height*/
+mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs, erase,noErase, rect, CONTROL, SPACEBAR, width, height, color*/
 
 const SPACEBAR = 32;
 
@@ -46,8 +46,10 @@ function setup(){
   socket.on("active", (activity) => isPlayerActive = activity);
   
   socket.on("backgroundColor", (apBackgroundColor) => {
-   console.log(apBackgroundColor);
-   updateBackground(apBackgroundColor); 
+    let bolor = new color;
+    Object.assign(bolor,apBackgroundColor);
+   console.log(bolor);
+   updateBackground(bolor); 
   });
   
 

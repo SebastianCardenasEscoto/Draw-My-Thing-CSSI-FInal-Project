@@ -51,9 +51,9 @@ io.sockets.on('connection', (socket) =>{
     
   });
   
-  socket.on("backgroundColor", (backgroundColor) => {
+  socket.on("backgroundColor", (bgc) => {
    socket.broadcast.emit("backgroundColor");
-   console.log(backgroundColor);
+   console.log(bgc);
   });
   
   socket.on("guess", msg => console.log(msg));

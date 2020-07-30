@@ -72,7 +72,7 @@ function draw()  {
   
   // This fucntion allows the background to change to whatever color is selected.\
   if(isPlayerActive){
-    if(backgroundColor != colorPicker.color()){
+    if(  JSON.stringify(backgroundColor) != JSON.stringify(colorPicker.color() ) ){
       updateBackground();
       socket.emit("backgroundColor",backgroundColor);  
     }
@@ -190,8 +190,8 @@ function updateBackground(bgc){
     backgroundColor = colorPicker.color();
     drawingForm.style.backgroundColor = backgroundColor;
   } else{
-    console.log(bgc);
-    drawingForm.style.backgroundColor = bgc;
+    backgroundColor = bgc;
+    drawingForm.style.backgroundColor = backgroundColor;
   }
 }
 

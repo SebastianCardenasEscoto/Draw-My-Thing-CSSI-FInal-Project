@@ -33,6 +33,10 @@ io.sockets.on('connection', (socket) =>{
   socket.on("playerJoin", username => {
     players.push(new Player(socket.id,username));
     console.log(players);
+    
+    if(players.length > 2){
+      socket.broadcast.emit("gameStart",true);
+    }
   });
   
   socket.on("guess", msg => console.log(msg));

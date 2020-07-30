@@ -43,7 +43,7 @@ io.sockets.on('connection', (socket) =>{
         console.log(activePlayerIndex);
         players[activePlayerIndex].active = true;
 
-        io.to(players[activePlayerIndex].active).emit('active',true);
+        io.to(players[activePlayerIndex].id).emit('active',true);
         socket.broadcast.emit("redirct");
       }
     }
@@ -71,7 +71,9 @@ io.sockets.on('connection', (socket) =>{
   
 });
 
-
+if(gameStarted){
+  setInterval()
+}
 
 
 function userLeave(id){
@@ -98,4 +100,14 @@ class Player{
     this.active = false;
     this.username = username;
   }
+}
+
+function chooseNewActivePlayer(){
+    io.to(players[activePlayerIndex].id).emit('active',false);
+    players[activePlayerIndex].active = false;
+  
+    activePlayerIndex = Math.floor( Math.random(0, players.length) );
+    players[activePlayerIndex].active = true;
+  
+    io.to(players[activePlayerIndex].id).emit('active',true);
 }

@@ -11,24 +11,25 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart, previousBackground, Interactivefield;
+let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart, previousBackground, Interactivefield, output;
 let img, img2;
 let r , c;
 socket = io.connect();
 
  function preload() {
    // preload() runs once
-   img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Frect00.png?v=1596119775652');
-   img2 = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Fcircle-xxl.png?v=1596119912434')
+   // img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Frect00.png?v=1596119775652');
+   // img2 = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Fcircle-xxl.png?v=1596119912434')
  }
 
 function setup(){
   Interactivefield = createInput();
   Interactivefield.changed(newText);
   Interactivefield.changed(newTyping);
-  img.loadPixels();
-  r = img.get(img.width / 2, img.height / 2);
-  c = img2.get(img2.width / 2, img2.height / 2);
+  output = select('#output');
+  // img.loadPixels();
+  // r = img.get(img.width / 2, img.height / 2);
+  // c = img2.get(img2.width / 2, img2.height / 2);
   
   // javascript working space
   canv = createCanvas(400,400);
@@ -80,7 +81,9 @@ function draw()  {
     if(  JSON.stringify(backgroundColor) != JSON.stringify(colorPicker.color() ) ){
       updateBackground();
       socket.emit("backgroundColor",backgroundColor);  
-    }
+    } 
+  } else{
+    drawingForm.style.backgroundColor = backgroundColor;
   }
 
   
@@ -216,12 +219,14 @@ function mouseInCanvas(){
 }
 
 function newTyping()  {
+  output.html(textfield.value());
   
+  
+
 }
 
-// could you hold up a sec?
-//sure
-// Do you want me to exit for a sec?
+
+
 function newText()  {
   
 }

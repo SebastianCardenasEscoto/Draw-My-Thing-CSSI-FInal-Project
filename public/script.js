@@ -1,5 +1,5 @@
 /*global createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY, io, noStroke, keyCode,
-mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs, erase,noErase, rect, CONTROL, SPACEBAR, width, height, color*/
+mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs, erase,noErase, rect, CONTROL, SPACEBAR, width, height, color,createInput*/
 
 const SPACEBAR = 32;
 
@@ -11,12 +11,10 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart, previousBackground;
+let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart, previousBackground, Interactivefield;
 let img, img2;
 let r , c;
 socket = io.connect();
-
-var interactiveField();
 
  function preload() {
    // preload() runs once
@@ -25,7 +23,9 @@ var interactiveField();
  }
 
 function setup(){
-  
+  Interactivefield = createInput();
+  Interactivefield.changed(newText);
+  Interactivefield.changed(newTyping);
   img.loadPixels();
   r = img.get(img.width / 2, img.height / 2);
   c = img2.get(img2.width / 2, img2.height / 2);
@@ -43,13 +43,13 @@ function setup(){
    gameStart= true;
   });
   
-  socket.on("redirect", ()=> switchUserPage());
+  socket.on("redirect", ()=> switchText());
   
   socket.on("active", (activity) => isPlayerActive = activity);
   
   socket.on("backgroundColor", (apBackgroundColor) => {
     console.log(apBackgroundColor);
-   updateBackground(apBackgroundColor); 
+    updateBackground(apBackgroundColor); 
   });
   
 
@@ -69,6 +69,8 @@ function setup(){
   }
 
 function draw()  {
+  
+
 
   // image(img, 7,8,41,20);
   // image(img2,60,10,20,20);
@@ -194,6 +196,7 @@ function updateBackground(bgc){
     backgroundColor = colorPicker.color();
     drawingForm.style.backgroundColor = backgroundColor;
   } else{
+    console.log(bgc);
     backgroundColor = bgc;
     drawingForm.style.backgroundColor = backgroundColor;
   }
@@ -210,4 +213,15 @@ function mouseInCanvas(){
     return false;
   else
     return true;
+}
+
+function newTyping()  {
+  
+}
+
+// could you hold up a sec?
+//sure
+// Do you want me to exit for a sec?
+function newText()  {
+  
 }

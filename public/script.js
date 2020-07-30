@@ -50,7 +50,8 @@ function setup(){
   
   socket.on("backgroundColor", (apBackgroundColor) => {
     console.log(apBackgroundColor);
-    updateBackground(apBackgroundColor); 
+    let bolor = color(apBackgroundColor._array[0]*255,apBackgroundColor._array[1]*255,apBackgroundColor._array[2]*255,apBackgroundColor._array[3]*255);
+    updateBackground(bolor); 
   });
   
 
@@ -219,7 +220,7 @@ function mouseInCanvas(){
 }
 
 function newTyping()  {
-  output.html(textfield.value());
+  output.html(#ifield.value());
   
   
 

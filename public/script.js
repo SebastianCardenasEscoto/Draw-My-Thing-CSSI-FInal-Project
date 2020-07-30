@@ -191,7 +191,7 @@ function updateBackground(bgc){
     drawingForm.style.backgroundColor = backgroundColor;
   } else{
     backgroundColor = bgc;
-    drawingForm.style.backgroundColor = backgroundColor;
+    drawingForm.style.backgroundColor = backgroundColor.toString();
   }
 }
 

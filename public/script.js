@@ -55,10 +55,12 @@ function draw()  {
     if(backgroundColor != colorPicker.color()){
       updateBackground();
       
-      if(previousBackground == null)
+      if(previousBackground == null){
+        
           previousBackground = backgroundColor;
+          console.log("I should run once");
       
-      else if(previousBackground == backgroundColor){
+      } else if(previousBackground === backgroundColor){
         
           socket.emit("backgroundColor",backgroundColor);
           console.log("lmao");
@@ -66,6 +68,7 @@ function draw()  {
         
       } else 
         previousBackground = backgroundColor;
+        console.log("i should run a few times")
     } 
     
   }
@@ -188,7 +191,6 @@ function resetCanv(){
 
 function updateBackground(bgc){
   if(bgc == null){
-    
     backgroundColor = colorPicker.color();
     drawingForm.style.backgroundColor = backgroundColor;
   

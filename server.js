@@ -52,7 +52,7 @@ io.sockets.on('connection', (socket) =>{
   });
   
   socket.on("backgroundColor", (bgc) => {
-   socket.broadcast.emit("backgroundColor");
+   socket.broadcast.emit("backgroundColor",bgc);
    console.log(bgc);
   });
   

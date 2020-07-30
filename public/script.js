@@ -189,7 +189,6 @@ function updateBackground(bgc){
   if(bgc == null){
     backgroundColor = colorPicker.color();
     drawingForm.style.backgroundColor = backgroundColor;
-  
   } else{
     console.log(bgc);
     drawingForm.style.backgroundColor = bgc;

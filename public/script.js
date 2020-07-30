@@ -26,8 +26,7 @@ function setup(){
   canv.parent('sketch-div');
   
   socket.on("clearCanv", ()=>{
-    canv = createCanvas(400,400);
-    canv.parent("sketch-div");
+     resetCanv();
   });
   
 
@@ -50,8 +49,14 @@ function setup(){
 
 function draw()  {
   // This fucntion allows the background to change to whatever color is selected.\
-  if(backgroundColor != colorPicker.color()) backgroundColor = colorPicker.color();
-  drawingForm.style.backgroundColor = backgroundColor;
+  if(isPlayerActive){
+    if(backgroundColor != colorPicker.color()){
+      updateBackground();
+      socket.emit("backgroundColor",backgroundColor)
+    } 
+    
+  }
+
   
   
   if(mouseIsPressed){
@@ -71,6 +76,7 @@ function draw()  {
     paintbrush.position = null;
     }
   }
+  
   
 }
 // whenever the spacebar key is pressed the screen changes the background color     
@@ -163,5 +169,11 @@ function switchUserPage()  {
 }
 
 function resetCanv(){
-  
+   canv = createCanvas(400,400);
+    canv.parent("sketch-div");
+}
+
+function updateBackground(){
+  backgroundColor = colorPicker.color();
+  drawingForm.style.backgroundColor = backgroundColor;
 }

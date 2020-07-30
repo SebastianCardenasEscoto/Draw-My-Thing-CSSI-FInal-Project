@@ -53,7 +53,6 @@ io.sockets.on('connection', (socket) =>{
   socket.on("clearCanv", () => socket.broadcast.emit("clearCanv"));
   
   socket.on("mouse", (paintbrush)=>{
-    console.log(paintbrush);
     socket.broadcast.emit("mouse", paintbrush);
   });
   

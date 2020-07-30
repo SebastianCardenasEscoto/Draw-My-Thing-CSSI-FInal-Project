@@ -7,6 +7,7 @@ const express = require("express");
 const app = express();
 const socket = require('socket.io');
 let users = []; let players = [];
+let gameStarted = false, activePlayerIndex;
 
 
 // make all the files in 'public' available
@@ -35,7 +36,12 @@ io.sockets.on('connection', (socket) =>{
     console.log(players);
     
     if(players.length > 2){
-      socket.broadcast.emit("gameStart",true);
+      gameStarted = true;
+      activePlayerIndex = Math.random(0, players.length);
+      
+      players[activePlayerIndex].active = true;
+      
+      socket.broadcast.emit("gameStart",gameStarted);
     }
   });
   

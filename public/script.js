@@ -34,9 +34,8 @@ function setup(){
   colorPicker.parent("color-picker");
   
  
-  socket.on("mouse", (otherPersonMouse) => {
-    drawLine(otherPersonMouse.x, otherPersonMouse.y,
-                     otherPersonMouse.pX, otherPersonMouse.pY);
+  socket.on("mouse", (otherPersonPaintbrush) => {
+      otherPersonPaintbrush.draw();
      });
   }
 
@@ -57,7 +56,7 @@ function draw()  {
     if(isPlayerActive){
       
     paintbrush.draw();
-    socket.emit("mouse", mousePosition);
+    socket.emit("mouse", paintbrush);
       
     }
   }
@@ -79,7 +78,7 @@ function keyPressed(){
 class PaintBrush{
   constructor(){
     this.color = "white";
-    this.mode = "RECT";
+    this.mode = "LINE";
     this.isErasing = false;
     this.strokeWeight = 10;
     

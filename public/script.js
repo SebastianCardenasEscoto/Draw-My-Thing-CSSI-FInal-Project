@@ -45,13 +45,15 @@ function setup(){
   
   socket.on("active", (activity) => isPlayerActive = activity);
   
-  socket.on("backgroundColor", (apBackgroundColor) => updateBackground(apBackgroundColor));
+  socket.on("backgroundColor", (apBackgroundColor) => {
+   console.log(apBackgroundColor);
+   updateBackground(apBackgroundColor); 
+  });
   
 
   paintbrush = new PaintBrush;
   
   socket.emit('playerJoin',userName);
-  // background(backgroundColor);
   noStroke();
   colorPicker = createColorPicker('#ed225d');
   colorPicker.parent("color-picker");
@@ -59,7 +61,6 @@ function setup(){
   socket.on("mouse", (drawerData) => {
       let drawerBrush = new PaintBrush;
       Object.assign(drawerBrush,drawerData);
-      console.log(drawerBrush);
       drawerBrush.draw();
      });
  
@@ -75,7 +76,6 @@ function draw()  {
     if(backgroundColor != colorPicker.color()){
       updateBackground();
       socket.emit("backgroundColor",backgroundColor);  
-   
     }
   }
 
@@ -192,6 +192,7 @@ function updateBackground(bgc){
     drawingForm.style.backgroundColor = backgroundColor;
   
   } else{
+    console.log(bgc);
     drawingForm.style.backgroundColor = bgc;
   }
 }

@@ -12,13 +12,6 @@ let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
 let colorPicker, paintbrush, socket, canv, isPlayerActive = true, gameStart, previousBackground;
-class rectangle  {
-  constructor
-  x: 200
-  y: 100
-  w: 50
-  l: 50
-}
 
 function preload(){
   socket = io.connect();
@@ -224,3 +217,10 @@ function mouseInCanvas(){
     return true;
 }
 
+class Player{
+  constructor(id, username){
+    this.id = id;
+    this.score = 0;
+    this.active = false;
+  }
+}

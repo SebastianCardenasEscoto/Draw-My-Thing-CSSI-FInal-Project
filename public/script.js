@@ -11,7 +11,7 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket, canv, isPlayerActive = true, gameStart;
+let colorPicker, paintbrush, socket, canv, isPlayerActive = true, gameStart, previousBackground;
 
 
 function preload(){
@@ -28,6 +28,8 @@ function setup(){
   socket.on("clearCanv", ()=>{
      resetCanv();
   });
+  
+  socket.on("backgroundColor", (apBackgroundColor) => updateBackground(apBackgroundColor));
   
 
   paintbrush = new PaintBrush;
@@ -52,7 +54,15 @@ function draw()  {
   if(isPlayerActive){
     if(backgroundColor != colorPicker.color()){
       updateBackground();
-      socket.emit("backgroundColor",backgroundColor)
+      
+      if(previousBackground == null)
+          previousBackground = backgroundColor;
+      
+      else if(previousBackground == backgroundColor)
+          socket.emit("backgroundColor",backgroundColor);
+      
+      else 
+        previousBackground = backgroundColor;
     } 
     
   }
@@ -173,7 +183,13 @@ function resetCanv(){
     canv.parent("sketch-div");
 }
 
-function updateBackground(){
-  backgroundColor = colorPicker.color();
-  drawingForm.style.backgroundColor = backgroundColor;
+function updateBackground(bgc){
+  if(bgc == null){
+    
+    backgroundColor = colorPicker.color();
+    drawingForm.style.backgroundColor = backgroundColor;
+  
+  } else{
+    drawingForm.style.backgroundColor = bgc;
+  }
 }

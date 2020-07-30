@@ -48,6 +48,8 @@ io.sockets.on('connection', (socket) =>{
     
   });
   
+  socket.on("backgroundColor", (backgroundColor) => socket.broadcast.emit(backgroundColor) );
+  
   socket.on("guess", msg => console.log(msg));
   
   socket.on("clearCanv", () => socket.broadcast.emit("clearCanv"));

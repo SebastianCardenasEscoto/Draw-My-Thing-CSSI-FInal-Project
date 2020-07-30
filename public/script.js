@@ -12,12 +12,15 @@ let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
 let colorPicker, paintbrush, socket, canv, isPlayerActive = true, gameStart, previousBackground;
+let img;
+let c;
+socket = io.connect();
 
-function preload(){
-  socket = io.connect();
-}
 
 function setup(){
+  
+  img.loadPixels();
+  c = img.get(img.width / 2, img.height / 2);
   
   // javascript working space
   canv = createCanvas(400,400);
@@ -49,8 +52,6 @@ function setup(){
 
 function draw()  {
 
-fill("white")
-rect(50,200,50,50);
   
   
   
@@ -217,3 +218,7 @@ function mouseInCanvas(){
     return true;
 }
 
+function preload() {
+  // preload() runs once
+  img = loadImage('assets/laDefense.jpg');
+}

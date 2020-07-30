@@ -220,7 +220,7 @@ function mouseInCanvas(){
 }
 
 function newTyping()  {
-  output.html(#ifield.value());
+  // output.html(#ifield.value());
   
   
 

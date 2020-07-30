@@ -16,7 +16,7 @@
     
 
     <!-- import the webpage's client-side javascript file--> 
-    
+    <script src="/script.js" defer></script> 
   </head>
   <body>
     
@@ -28,27 +28,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.dom.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.1/qs.min.js"></script>
     <script src="path/to/p5.sound.js"></script>
     
     <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
     
-    
-    <div id = "content" style = "align-content: space-evenly;">
+    <div id = "content">
       
-      <div style ="display:flex;justify-content:center;flex-wrap:wrap;">
-        <h2>Welcome To A Visual Guessing Game!</h2>
-        <h1 style= ""></h1>
-      </div>  
+      <h1>You are a guesser!</h1>
+      
+      <div id = "sketch-div">
+      
+      </div>
+      
+      <div id = "color-picker" style = "background-color:blue; width:220px; height:20px;">
+      </div>
     
-      <form id="guessForm" action = "waiting.html" style>
-        <input id="username" name = "username" placeholder="Enter a username..." required>
+      <form id="guessForm">
+        <input id="msg">
       </form>
     </div>
     
     
     
     
-
+    
+    
+    
   
   </body>
 </html>

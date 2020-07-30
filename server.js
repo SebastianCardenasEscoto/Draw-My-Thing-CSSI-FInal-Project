@@ -37,7 +37,7 @@ io.sockets.on('connection', (socket) =>{
     
     if(players.length > 2){
       gameStarted = true;
-      activePlayerIndex = Math.random(0, players.length);
+      activePlayerIndex = Math.floor( Math.random(0, players.length) );
       
       players[activePlayerIndex].active = true;
       
@@ -52,7 +52,9 @@ io.sockets.on('connection', (socket) =>{
   });
   
   socket.on('disconnect', ()=>{
-    console.log(`${socket.id} has left the chat`);
+    userLeave(socket.id);
+    playerLeave(socket.id);
+    console.log(players);
   });
   
 });
@@ -62,6 +64,14 @@ io.sockets.on('connection', (socket) =>{
 
 function userLeave(id){
   let index = users.findIndex(user => user === id);
+  
+  if(index !== -1){
+    return users.splice(index,1)[0];
+  }
+}
+
+function playerLeave(id){
+  let index = players.findIndex(player => player.id === id);
   
   if(index !== -1){
     return users.splice(index,1)[0];

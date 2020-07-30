@@ -19,23 +19,6 @@ function preload(){
 
 function setup(){
   
-function Rectangle()  {
-  fill("white")
-  rect(100,100,50,50);
-}
-  
-if(Rectangle)  {
-  Rectangle = true;
-  
-}
-  
-  
-  
-  
-  
-  
-  
-  
   // javascript working space
   canv = createCanvas(400,400);
   canv.parent('sketch-div');
@@ -65,6 +48,13 @@ if(Rectangle)  {
   }
 
 function draw()  {
+
+fill("white")
+rect(50,200,50,50);
+  
+  
+  
+  
   // This fucntion allows the background to change to whatever color is selected.\
   if(isPlayerActive){
     if(backgroundColor != colorPicker.color()){

@@ -40,7 +40,7 @@ io.sockets.on('connection', (socket) =>{
       if(gameStarted == false){
         gameStarted = true;
         socket.broadcast.emit("gameStart", gameStarted);
-        activePlayerIndex = Math.floor( Math.random(0, players.length) );
+        activePlayerIndex = Math.floor( Math.random() * (players.length) );
         console.log(activePlayerIndex);
         players[activePlayerIndex].active = true;
  

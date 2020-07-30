@@ -7,8 +7,6 @@
 body {
   background-color:rgba(41, 49, 79.1);
   font-family: sans-serif;
-  margin: 2em 1em;
-  line-height: 1.5em;
   display:flex;
   justify-content: center;
   align-items:center;

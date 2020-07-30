@@ -16,7 +16,7 @@
     
 
     <!-- import the webpage's client-side javascript file--> 
-    <script src="/script.js" defer></script> 
+    
   </head>
   <body>
     
@@ -31,19 +31,17 @@
     <script src="path/to/p5.sound.js"></script>
     
     <!-- import the webpage's javascript file -->
-    <script src="/script.js" defer></script>
     
-    <div id = "content">
-      
-      <h1>You are a Guesser!</h1>
-      
-      <div id = "sketch-div">
-      
-      </div>
-      
     
-      <form id="guessForm">
-        <input id="msg">
+    <div id = "content" style = "align-content: space-evenly;">
+      
+      <div style ="display:flex;justify-content:center;flex-wrap:wrap;">
+        <h2>Welcome To A Visual Guessing Game!</h2>
+        <h1 style= ""></h1>
+      </div>  
+    
+      <form id="guessForm" action = "waiting.html" style>
+        <input id="username" name = "username" placeholder="Enter a username..." required>
       </form>
     </div>
     

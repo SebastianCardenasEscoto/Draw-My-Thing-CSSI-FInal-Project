@@ -19,6 +19,22 @@ function preload(){
 
 function setup(){
   
+function Rectangle()  {
+  fill("white")
+  rect(100,100,50,50);
+}
+  
+if(Rectangle)  {
+  Rectangle = true;
+  
+}
+  
+  
+  
+  
+  
+  
+  
   
   // javascript working space
   canv = createCanvas(400,400);
@@ -49,12 +65,6 @@ function setup(){
   }
 
 function draw()  {
-  
-  fill("white");
-  rect(rectangle.x, rectangle.y, rectangle.w, rectangle.l);
-  
-  
-  
   // This fucntion allows the background to change to whatever color is selected.\
   if(isPlayerActive){
     if(backgroundColor != colorPicker.color()){
@@ -217,10 +227,3 @@ function mouseInCanvas(){
     return true;
 }
 
-class Player{
-  constructor(id, username){
-    this.id = id;
-    this.score = 0;
-    this.active = false;
-  }
-}

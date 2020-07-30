@@ -1,5 +1,5 @@
 /*global createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY, io, noStroke, keyCode,
-mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs, erase,noErase, rect, CONTROL, SPACEBAR*/
+mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs, erase,noErase, rect, CONTROL, SPACEBAR, width, height*/
 
 const SPACEBAR = 32;
 
@@ -58,10 +58,13 @@ function draw()  {
       if(previousBackground == null)
           previousBackground = backgroundColor;
       
-      else if(previousBackground == backgroundColor)
+      else if(previousBackground == backgroundColor){
+        
           socket.emit("backgroundColor",backgroundColor);
-      
-      else 
+          console.log("lmao");
+          previousBackground = null;
+        
+      } else 
         previousBackground = backgroundColor;
     } 
     
@@ -69,7 +72,7 @@ function draw()  {
 
   
   
-  if(mouseIsPressed){
+  if(mouseIsPressed && mouseInCanvas()){
     
     let mousePosition = {
       x: mouseX,
@@ -192,4 +195,17 @@ function updateBackground(bgc){
   } else{
     drawingForm.style.backgroundColor = bgc;
   }
+}
+
+function mouseInCanvas(){
+  if(mouseX < 0) 
+    return false;
+  else if(mouseX > width) 
+    return false; 
+  else if(mouseY < 0)
+    return false;
+  else if(mouseY > height)
+    return false;
+  else
+    return true;
 }

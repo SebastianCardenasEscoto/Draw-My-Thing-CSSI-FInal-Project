@@ -13,14 +13,14 @@ let guessForm = document.getElementById("guessForm");
 
 let colorPicker, paintbrush, socket, canv, isPlayerActive = true, gameStart, previousBackground;
 let img;
-let c;
+let r;
 socket = io.connect();
 
 
 function setup(){
   
   img.loadPixels();
-  c = img.get(img.width / 2, img.height / 2);
+  r = img.get(img.width / 2, img.height / 2);
   
   // javascript working space
   canv = createCanvas(400,400);
@@ -52,9 +52,7 @@ function setup(){
 
 function draw()  {
 
-  
-  
-  
+  image(img, 7,8,41,20);
   
   // This fucntion allows the background to change to whatever color is selected.\
   if(isPlayerActive){
@@ -220,5 +218,5 @@ function mouseInCanvas(){
 
 function preload() {
   // preload() runs once
-  img = loadImage('assets/laDefense.jpg');
+  img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Frectangle.png?v=1596118853245');
 }

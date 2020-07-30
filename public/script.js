@@ -1,8 +1,9 @@
 /*global createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY, io, noStroke, keyCode,
-mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs, erase,noErase, rect, CONTROL*/
+mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs, erase,noErase, rect, CONTROL, SPACEBAR*/
 
 const SPACEBAR = 32;
-const username = Qs.parse(location.search,{
+
+const userName = Qs.parse(location.search,{
    ignoreQueryPrefix: true
  });
 
@@ -26,7 +27,7 @@ function setup(){
   
   paintbrush = new PaintBrush;
   
-  socket.emit('playerJoin',username);
+  socket.emit('playerJoin',userName);
   // background(backgroundColor);
   noStroke();
   colorPicker = createColorPicker('#ed225d');
@@ -104,11 +105,14 @@ class PaintBrush{
   }
   
   drawRect(){
-    if(this.squarePoints == null){ this.squarePoints = {
+    if(this.squarePoints === null){ 
+      this.squarePoints = {
             x: mouseX,
             y: mouseY
-        }
-     else{
+        };
+      console.log(this.squarePoints);
+    } else{
+      console.log(this.squarePoints);
       rect(this.squarePoints.x, this.squarePoints.y, this.sqaurePoints.x - mouseX);
     } 
   }

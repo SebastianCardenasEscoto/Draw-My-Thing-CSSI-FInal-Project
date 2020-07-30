@@ -32,17 +32,19 @@ io.sockets.on('connection', (socket) =>{
   users.push(socket.id);
   
   socket.on("playerJoin", username => {
-    players.push(new Player(socket.id,username));
+    players.push(new Player(socket.id,username.username));
     console.log(players);
+    console.log(players.length);
     
     if(players.length > 2){
       if(gameStarted == false){
         gameStarted = true;
         activePlayerIndex = Math.floor( Math.random(0, players.length) );
-
+        console.log(activePlayerIndex);
         players[activePlayerIndex].active = true;
 
-        io.sockets.socket(players[activePlayerIndex].active).emit('active',true);
+        io.to(players[activePlayerIndex].active).emit('active',true);
+        socket.broadcast.emit("redirct");
       }
     }
     
@@ -94,5 +96,6 @@ class Player{
     this.id = id;
     this.score = 0;
     this.active = false;
+    this.username = username;
   }
 }

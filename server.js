@@ -47,8 +47,8 @@ io.sockets.on('connection', (socket) =>{
   
   socket.on("guess", msg => console.log(msg));
   
-  socket.on("mouse", (mousePosition)=>{
-    socket.broadcast.emit("mouse", mousePosition);
+  socket.on("mouse", (paintbrush)=>{
+    socket.broadcast.emit("mouse", paintbrush);
   });
   
   socket.on('disconnect', ()=>{

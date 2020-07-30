@@ -11,11 +11,13 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket, canv, isPlayerActive = true;
+let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart = true;
 
 
 function preload(){
   socket = io.connect();
+  
+
 }
 
 function setup(){
@@ -24,6 +26,13 @@ function setup(){
   // javascript working space
   canv = createCanvas(400,400);
   canv.parent('sketch-div');
+  
+  
+    if(isPlayerActive == true){
+    window.location.replace("drawer.html")
+    } else if(gameStart){
+    window.location.replace("guesser.html")
+    }
   
   paintbrush = new PaintBrush;
   

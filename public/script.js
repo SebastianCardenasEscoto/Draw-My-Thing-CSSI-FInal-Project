@@ -12,8 +12,8 @@ let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
 let colorPicker, paintbrush, socket, canv, isPlayerActive = true, gameStart, previousBackground;
-let img;
-let r;
+let img, img1;
+let r , c;
 socket = io.connect();
 
 
@@ -21,6 +21,7 @@ function setup(){
   
   img.loadPixels();
   r = img.get(img.width / 2, img.height / 2);
+  c = img.get(img.width / 2, img.height / 2);
   
   // javascript working space
   canv = createCanvas(400,400);
@@ -53,6 +54,7 @@ function setup(){
 function draw()  {
 
   image(img, 7,8,41,20);
+  image2(img,74,19,20,20);
   
   // This fucntion allows the background to change to whatever color is selected.\
   if(isPlayerActive){
@@ -218,5 +220,7 @@ function mouseInCanvas(){
 
 function preload() {
   // preload() runs once
-  img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Frectangle.png?v=1596118853245');
+  img = loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Frect00.png?v=1596119775652');
+  img2=loadImage('https://cdn.glitch.com/788491d6-3d68-4b92-871c-448f512a6761%2Frect00.png?v=1596119775652');
+
 }

@@ -67,6 +67,8 @@ function keyPressed(){
   if(keyCode == SPACEBAR){
     canv = createCanvas(400,400);
     canv.parent("sketch-div");
+  } else if (keyCode == CONTROL){
+    paintbrush.isErasing = !paintbrush.isErasing;
   }
   
   
@@ -77,6 +79,7 @@ class PaintBrush{
   constructor(){
     this.color = "white";
     this.mode = "LINE";
+    this.isErasing = false;
     this.strokeWeight = 10;
   }
   
@@ -84,6 +87,8 @@ class PaintBrush{
     stroke(this.color);
     fill(this.color);
     strokeWeight(this.strokeWeight);
+    
+    this.isErasing? erase(): noErase();
     
     if(this.mode == "LINE"){
       this.drawLine();
@@ -114,6 +119,6 @@ function drawLine(x,y,px,py){
 
 
 
-function eraserBrush  {
+function eraserBrush()  {
   
 }

@@ -1,5 +1,5 @@
 /*global createCanvas, io.connect, background, ellipse, mouseX, mouseY, line, pmouseX, pmouseY, io, noStroke, keyCode,
-mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs*/
+mouseIsPressed, stroke, strokeWeight, createColorPicker, fill, Qs, erase,noErase, rect, CONTROL*/
 
 const SPACEBAR = 32;
 const username = Qs.parse(location.search,{
@@ -78,7 +78,7 @@ function keyPressed(){
 class PaintBrush{
   constructor(){
     this.color = "white";
-    this.mode = "LINE";
+    this.mode = "RECT";
     this.isErasing = false;
     this.strokeWeight = 10;
     
@@ -94,8 +94,8 @@ class PaintBrush{
     
     if(this.mode == "LINE"){
       this.drawLine();
-    } else if(this.mode == "SQAURE"){
-      this.drawSqaure
+    } else if(this.mode == "RECT"){
+      this.drawRect();
     }
   }
   
@@ -103,11 +103,14 @@ class PaintBrush{
     line(mouseX,mouseY,pmouseX,pmouseY);
   }
   
-  drawSquare(){
-    if(this.squarePoints == null) this.squarePoints = {
-      x: mouseX,
-      y: mouseY
-    }; 
+  drawRect(){
+    if(this.squarePoints == null){ this.squarePoints = {
+            x: mouseX,
+            y: mouseY
+        }
+     else{
+      rect(this.squarePoints.x, this.squarePoints.y, this.sqaurePoints.x - mouseX);
+    } 
   }
 }
 

@@ -11,13 +11,11 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart;
+let colorPicker, paintbrush, socket, canv, isPlayerActive = true, gameStart;
 
 
 function preload(){
   socket = io.connect();
-  
-
 }
 
 function setup(){
@@ -39,9 +37,6 @@ function setup(){
   colorPicker.parent("color-picker");
   
  
-  socket.on("mouse", (otherPersonPaintbrush) => {
-      otherPersonPaintbrush.draw();
-     });
   }
 
 function draw()  {
@@ -49,6 +44,12 @@ function draw()  {
   if(backgroundColor != colorPicker.color()) backgroundColor = colorPicker.color();
   drawingForm.style.backgroundColor = backgroundColor;
   
+  socket.on("mouse", (drawerData) => {
+      let drawerBrush = new PaintBrush;
+      Object.assign(drawerBrush,drawerData);
+      console.log(drawerBrush);
+      drawerBrush.draw();
+     });
   if(mouseIsPressed){
     
     let mousePosition = {
@@ -86,7 +87,6 @@ class PaintBrush{
     this.mode = "LINE";
     this.isErasing = false;
     this.strokeWeight = 10;
-    
     this.squarePoints = null;
   }
   
@@ -105,7 +105,11 @@ class PaintBrush{
   }
   
   drawLine(){
+    if(this.x == null){
     line(mouseX,mouseY,pmouseX,pmouseY);
+    } else{
+      line(this.x,this.y,this.px,thispy);
+    }
   }
   
   drawRect(){

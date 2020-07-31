@@ -177,11 +177,11 @@ border: 2px solid #e74c3c;
 
 
 #t {
-text-align:left;
-font-size:15px;
-font-family: Verdana;
-color:black;
-border: 2px solid #f1c40f;
+  text-align:left;
+  font-size:15px;
+  font-family: Verdana;
+  color:black;
+  border: 2px solid #f1c40f;
   margin-top: -5px;
   margin-left: 72px;
   width:200px;
@@ -189,17 +189,19 @@ border: 2px solid #f1c40f;
   background-color:white;
   border-radius:12px;
   resize: none;
-      outline: none;
-
+  outline: none;
 }
+
 #chat{
 
-border: 3px solid white;
-width:459px;
-background-color:#e74c3c;
-margin:auto;
-border-radius: 10px;
-margin-left:300px;
+  border: 3px solid white;
+  width:459px;
+  background-color:#e74c3c;
+  margin:auto;
+  border-radius: 10px;
+  margin-left:300px;
+  overflow-y:scroll;
+  
 }
 
 ::-webkit-scrollbar { 
@@ -242,3 +244,26 @@ background-color:#3498db;
 }
 
 
+.message{
+  padding: 10px;
+	margin-bottom: 15px;
+	background-color: var(--light-color);
+	border-radius: 5px;
+}
+
+.message .meta {
+	font-size: 13px;
+	font-weight: bold;
+	color: var(--dark-color-b);
+	opacity: 0.7;
+	margin-bottom: 7px;
+}
+
+.message .meta span {
+	color: #777;
+  font-size:12px;
+}
+
+.message .text{
+  font-size:12px;
+}

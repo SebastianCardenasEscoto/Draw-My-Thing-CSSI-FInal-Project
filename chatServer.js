@@ -36,16 +36,16 @@ io.sockets.on("connection", function(socket){
 	// disconnections
 	socket.on("disconnect", function(data){
 		
-		chat.splice(chat.indexOf(socket.username), 1); //accessing the array memers
+		chat.splice(chat.indexOf(socket.username), 1); //accessing the array chatter
 		
 						io.sockets.emit("chat left"); //checks if chat left
 
-	chatConnections.splice(memeConnections.indexOf(socket),1);
+	chatConnections.splice(chatConnections.indexOf(socket),1);
 	console.log("chat disconnected: %s ", chatConnections.length);
 	});
 	
 	//send messages
-	socket.on("send meme message", function(data){ 
+	socket.on("send chat messages", function(data){ 
 		console.log(data);// reveal typed messages
 		io.sockets.emit("new chat message", {msg: data});
 	

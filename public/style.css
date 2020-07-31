@@ -163,17 +163,16 @@ outline:none;
 border: 2px solid #e74c3c;
 
 }
-#messageInput{
- margin-left: 532px;
-text-align:center;
-border-radius:10px;
-outline:none;
-shadow:none;
-font-size:15px;
-font-family: Verdana;
-color:black;
-width:250px;
-height:50px;
+.messageInput{
+  margin-left:20px;
+  border-radius:10px;
+  outline:none;  
+  shadow:none;
+  font-size:15px;
+  font-family: Verdana;
+  color:black;
+  width:250px;
+  height:50px;
 }
 
 
@@ -234,6 +233,12 @@ background-color:#3498db;
   align-content:center;
 }
 
-
+#player-box{
+  width:200px;
+  background-color:white;
+  margin-right:20px;
+  border: 2px solid white;
+  border-radius:10px;
+}
 
 

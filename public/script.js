@@ -28,19 +28,11 @@ socket = io.connect();
  }
 
 function setup(){
-  // Interactivefield = createInput();
-  // Interactivefield.changed(newText);
-  // Interactivefield.changed(newTyping);
-  // output = select('#output');
-//   I've done python too,but i dont like it for webapps. flask syntax is weird
-// Yeah 
-  //
-  // okay i'll send something right now
   // javascript working space
   canv = createCanvas(400,400);
   canv.parent('sketch-div');
   
-  
+  // THis line reset the canvas through socket.io
   socket.on("clearCanv", ()=>{
      resetCanv();
   });

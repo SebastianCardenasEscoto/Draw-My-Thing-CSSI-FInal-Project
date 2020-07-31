@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>Chat Room</title>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+	</head>
+	
+<body>
+
+<div id="chatroom"> <p id="p">Chat Room</p><p id="pr"></p></div> 
+<br>
+<br>
+<div id="holder">
+	<form id="messageForm">
+						
+
+			<input type="text" id="messageInput" placeholder="Type..."/>
+			<button type="submit"  id="btn" onclick="hidel()"> Send </button>
+
+	</form>
+	
+	<div class="chat" id="chat" style="overflow-y:scroll; height:450px;">
+
+	
+<div id="messageBox">
+
+</div>
+</div>
+
+	
+	
+	</div>
+<button type="submit"  id="btn1" onclick="showl()"> Show All </button>
+<div id="people" style="overflow-y:scroll; height:450px;">
+</body>
+
+
+

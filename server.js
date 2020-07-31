@@ -56,7 +56,7 @@ io.sockets.on('connection', (socket) =>{
    console.log(bgc);
   });
   
-  socket.on("guess", msg => console.log(msg));
+  socket.on("guess", msg => io.emit("guess",msg));
   
   socket.on("clearCanv", () => socket.broadcast.emit("clearCanv"));
   

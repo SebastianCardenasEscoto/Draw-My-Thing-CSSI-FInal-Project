@@ -55,7 +55,7 @@ function setup(){
     updateBackground(bolor); 
   });
   
-
+  socket.on("guess", )
   paintbrush = new PaintBrush;
   
   socket.emit('playerJoin',userName);

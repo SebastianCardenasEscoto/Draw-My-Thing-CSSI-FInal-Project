@@ -242,7 +242,7 @@ function colorPickerVisibility(bool){
   if(bool){
     document.getElementById("color-picker").style.visibility = "visible"
     colorPicker.style("visibility:visible");
-  } else {
+  } else if(gameStart == true){
     document.getElementById("color-picker").style.visibility = "hidden"
     colorPicker.style("visibility:hidden");
   }

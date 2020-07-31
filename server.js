@@ -17,7 +17,7 @@ app.use(express.static("views"));
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {   
-    response.sendFile(__dirname + "/views/waiting.html");
+    response.sendFile(__dirname + "/views/landing.html");
 });
 
 // listen for requests :)

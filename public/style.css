@@ -277,7 +277,7 @@ background-color:#3498db;
 .color-picker{
   display:flex;
   flex-direction:column;
-  justify
+  align-items:center;
 }
 .color-picker .meta{
   background-color:blue; width:200px; height:20px;

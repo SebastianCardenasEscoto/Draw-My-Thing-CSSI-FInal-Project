@@ -89,6 +89,8 @@ function draw()  {
   // This fucntion allows the background to change to whatever color is selected.\
   switchText();
   if(isPlayerActive){
+    
+    paintbrush.color = paintbrushColorPicker.color();
     if(  JSON.stringify(backgroundColor) != JSON.stringify(colorPicker.color() ) ){
       updateBackground();
       socket.emit("backgroundColor",backgroundColor);
@@ -248,7 +250,9 @@ function newText()  {
 
 function colorPickerVisibility(bool){
   if(bool){
-    document.getElementById("color-picker").style.visibility = "visible"
+    let colorpickers = document.getElementsByClassName("color-picker");
+    colorpickers = Array.from(colorpickers);
+    colorpickers.forEach(colorpicker => colorpicker.style.visibility = "visible");
     colorPicker.style("visibility:visible");
   } else if(gameStart == true){
     document.getElementById("color-picker").style.visibility = "hidden"

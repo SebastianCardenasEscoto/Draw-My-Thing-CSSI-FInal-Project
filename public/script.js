@@ -11,6 +11,7 @@ const userName = Qs.parse(location.search,{
 let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
+let chatMessages = document.getElementById("chat");
 
 let colorPicker, paintbrush, socket, canv, isPlayerActive, 
     gameStart, previousBackground, Interactivefield, output,
@@ -68,6 +69,8 @@ function setup(){
   
   socket.on("guess", (guess) =>{
     outputMessage(guess);
+    
+    chatMessages.scrollTop = chatMessages.scrollHeight;
   });
   
   paintbrush = new PaintBrush;
@@ -271,5 +274,11 @@ function colorPickerVisibility(bool){
 }
 
 function outputMessage(msg){
-  
+  let div = document.createElement('div');
+  div.classList.add('message');
+  div.innerHTML = `<p class="meta">Draw my Thing <span>9:15pm</span></p>
+						  <p class="text">
+                  ${msg}
+						  </p>`;
+  chatMessages.appendChild(div);
 }

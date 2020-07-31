@@ -7,9 +7,13 @@ const express = require("express");
 const app = express();
 const socket = require('socket.io');
 const moment = require("moment");
+const fs = require("fs");
 let users = []; let players = [];
-let gameStarted = false, activePlayerIndex;
+let gameStarted = false, activePlayerIndex,activeWord;
 
+
+let rawdata = fs.readFileSync('words.json');
+let words = JSON.parse(rawdata);
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html

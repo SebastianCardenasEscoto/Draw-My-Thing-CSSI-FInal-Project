@@ -64,7 +64,7 @@ function setup(){
     
     chatMessages.scrollTop = chatMessages.scrollHeight;
   });
-  
+  // new paintbrush function
   paintbrush = new PaintBrush;
   
   socket.emit('playerJoin',userName);
@@ -81,13 +81,7 @@ function setup(){
   
   }
 
-function draw()  {
-  
-
-
-  // image(img, 7,8,41,20);
-  // image(img2,60,10,20,20);
-  
+function draw()  { 
   // This fucntion allows the background to change to whatever color is selected.\
   switchText();
   if(isPlayerActive){
@@ -96,7 +90,7 @@ function draw()  {
     if(  JSON.stringify(backgroundColor) != JSON.stringify(colorPicker.color() ) ){
       updateBackground();
       socket.emit("backgroundColor",backgroundColor);
-      
+      // 
       colorPickerVisibility(true);
       guessForm.style.visibility = "hidden";
     } 

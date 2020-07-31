@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^2.3.0",
-    "moment": "^2.27.0"
+    "moment": "^2.27.0",
+    "fs": "^0.0.2"
   },
   "engines": {
     "node": "12.x"

@@ -267,3 +267,9 @@ background-color:#3498db;
 .message .text{
   font-size:12px;
 }
+
+.small-message{
+  height:30px;
+  display:flex;
+  align-items:center;
+}

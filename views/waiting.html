@@ -34,24 +34,37 @@
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
     
-    <div id = "content"  style="background-color:gray;">
+    <div id = "content"  style="">
       
       <h1 id="top-text">Waiting for more players to connect</h1>
       
-      <div id = "sketch-and-chat"  style="display:flex;">
-        <div id="player-box" style="">
+      <div id = "middle-row"  style="display:flex;">
         
-          <h3 class="message" style="background-color:green;">Players:</h3>
-          <div class="message" style="background-color:yellow;">
+        <div id="player-box" >
+        
+          <h3 class="message" style="background-color:lightblue; color:rgb(72,72,72);">Players:</h3>
+          <div class="message small-message">
           
             <p class ="meta"> Mary</p>
           
           </div>  
         
         </div>
-        <div id = "sketch-div" >
+        
+        <div>
+          <div id = "sketch-div" >
       
+          </div>
+          
+          <div style="display:flex;justify-content:center;">
+          
+            <div id = "color-picker" style = "background-color:blue; width:220px; height:20px;"></div>
+            <div id = "paintbrush-color-picker" style = "background-color:blue; width:220px; height:20px;"></div>
+        
+          </div>
+        
         </div>
+        
         <div id="communication-box">
           
           <div id = "chat" style="background-color:white; width:354px; height:325px; margin-left:20px;">
@@ -71,7 +84,7 @@
         </div>
       </div>
       
-      <div id = "color-picker" style = "background-color:blue; width:220px; height:20px;"></div>
+      
     
     </div>
     

@@ -32,11 +32,10 @@ function setup(){
   // Interactivefield.changed(newText);
   // Interactivefield.changed(newTyping);
   // output = select('#output');
-  
-  // img.loadPixels();
-  // r = img.get(img.width / 2, img.height / 2);
-  // c = img2.get(img2.width / 2, img2.height / 2);
-  
+//   I've done python too,but i dont like it for webapps. flask syntax is weird
+// Yeah 
+  //
+  // okay i'll send something right now
   // javascript working space
   canv = createCanvas(400,400);
   canv.parent('sketch-div');

@@ -78,6 +78,7 @@ function setup(){
       Object.assign(drawerBrush,drawerData);
 
       let pbrushColor = new color(drawerBrush.color._array[0]*255,drawerBrush.color._array[1]*255,drawerBrush.color._array[2]*255,drawerBrush.color._array[3]*255);
+      pbrushColor.colorMode = RGB;
       console.log(pbrushColor);
       drawerBrush.color = pbrushColor;
       drawerBrush.draw();

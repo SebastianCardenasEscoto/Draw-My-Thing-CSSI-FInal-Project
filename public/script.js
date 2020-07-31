@@ -74,6 +74,9 @@ function setup(){
   socket.on("mouse", (drawerData) => {
       let drawerBrush = new PaintBrush;
       Object.assign(drawerBrush,drawerData);
+      console.log(drawerBrush.color._array);
+      let pbrushColor = new color(drawerBrush.color._array[0]*255,drawerBrush._array[1]*255,drawerBrush._array[2]*255,drawerBrush._array[3]*255);
+      drawerBrush.color = pbrushColor;
       drawerBrush.draw();
      });
  
@@ -258,7 +261,7 @@ function colorPickerVisibility(bool){
     paintbrushColorPicker.style("visibility:visible");
     
   } else if(gameStart == true){
-    colorpickers.forEach(colorpicker => colorpicker.style.visibility = "visible");
+    colorpickers.forEach(colorpicker => colorpicker.style.visibility = "hidden");
     colorPicker.style("visibility:hidden");
     paintbrushColorPicker.style("visibility:hidden");
   }

@@ -55,7 +55,9 @@ function setup(){
     updateBackground(bolor); 
   });
   
-  socket.on("guess", )
+  socket.on("guess", (guess) =>{
+    outputMessage(guess);
+  });
   paintbrush = new PaintBrush;
   
   socket.emit('playerJoin',userName);
@@ -246,4 +248,8 @@ function colorPickerVisibility(bool){
     document.getElementById("color-picker").style.visibility = "hidden"
     colorPicker.style("visibility:hidden");
   }
+}
+
+function outputMessage(msg){
+  
 }

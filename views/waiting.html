@@ -34,24 +34,26 @@
     <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
     
-    <div id = "content">
+    <div id = "content" >
       
       <h1 id="top-text">Waiting for more players to connect</h1>
       
-      <div id = "sketch-and-chat">
-        <div id = "sketch-div">
+      <div id = "sketch-and-chat"  style="display:flex;">
+        <div id = "sketch-div" >
       
         </div>
-        
-        <div id = "message-box">
+        <div>
+          <div id = "chat" style="background-color:white; width:350px; height:400px; margin-left:20px;">
+          </div>
+          
+            <form id="guessForm" style="margin-left:20px;">
+              <input id="msg">
+            </form>
         </div>
       </div>
-      <div id = "color-picker" style = "background-color:blue; width:220px; height:20px;">
-      </div>
+      
+      <div id = "color-picker" style = "background-color:blue; width:220px; height:20px;"></div>
     
-      <form id="guessForm">
-        <input id="msg">
-      </form>
     </div>
     
   </body>

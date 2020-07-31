@@ -249,14 +249,18 @@ function newText()  {
 }
 
 function colorPickerVisibility(bool){
-  if(bool){
-    let colorpickers = document.getElementsByClassName("color-picker");
+    let colorpickers = document.getElementById("color-pickers").children;
     colorpickers = Array.from(colorpickers);
+      
+  if(bool){
     colorpickers.forEach(colorpicker => colorpicker.style.visibility = "visible");
     colorPicker.style("visibility:visible");
+    paintbrushColorPicker.style("visibility:visible");
+    
   } else if(gameStart == true){
-    document.getElementById("color-picker").style.visibility = "hidden"
+    colorpickers.forEach(colorpicker => colorpicker.style.visibility = "visible");
     colorPicker.style("visibility:hidden");
+    paintbrushColorPicker.style("visibility:hidden");
   }
 }
 

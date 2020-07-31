@@ -276,9 +276,9 @@ function colorPickerVisibility(bool){
 function outputMessage(msg){
   let div = document.createElement('div');
   div.classList.add('message');
-  div.innerHTML = `<p class="meta">Draw my Thing <span>9:15pm</span></p>
+  div.innerHTML = `<p class="meta"> ${msg.username} <span>${msg.time}</span></p>
 						  <p class="text">
-                  ${msg}
+                  ${msg.text}
 						  </p>`;
   chatMessages.appendChild(div);
 }

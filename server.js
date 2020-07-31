@@ -6,6 +6,7 @@
 const express = require("express");
 const app = express();
 const socket = require('socket.io');
+const momment = require("moment");
 let users = []; let players = [];
 let gameStarted = false, activePlayerIndex;
 
@@ -35,6 +36,7 @@ io.sockets.on('connection', (socket) =>{
     players.push(new Player(socket.id,username.username));
     console.log(players);
     console.log(players.length);
+    
     
     if(players.length > 2){
       if(gameStarted == false){
@@ -120,4 +122,12 @@ function chooseNewActivePlayer(){
     players[activePlayerIndex].active = true;
   
     io.to(players[activePlayerIndex].id).emit('active',true);
+}
+
+function formatMessage(username,text){
+  return{
+    username,
+    text,
+    time: moment().format('h:mm a')
+  }
 }

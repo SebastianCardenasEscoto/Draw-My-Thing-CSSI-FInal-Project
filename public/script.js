@@ -279,3 +279,7 @@ function displayWord(word){
   document.getElementById('top-text-container').appendChild(div);
   document.getElementById('top-text').innerHTML = "You are the Drawer!";
 }
+
+function guesserText(){
+  
+}

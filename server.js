@@ -68,12 +68,14 @@ io.sockets.on('connection', (socket) =>{
   });
   
   socket.on("guess", msg => {
+    io.emit("guess", formatMessage(getCurrentUser(socket.id).username,msg));
     if(gameStarted){
       if(msg.toLowerCase() == activeWord.toLowerCase()){
-        getCurrentUser(socket.id).score
-      }
+        getCurrentUser(socket.id).score += 100;
+        io.emit("guess", formatMessage("Draw my Thing",  `${getCurrentUser(socket.id).username} guessed the Word!`));
+        chooseNewActivePlayer();
+       } 
     }
-    io.emit("guess", formatMessage(getCurrentUser(socket.id).username,msg))
   });
   
   socket.on("clearCanv", () => socket.broadcast.emit("clearCanv"));
@@ -135,9 +137,13 @@ function chooseNewActivePlayer(){
     players[activePlayerIndex].active = false;
   
     activePlayerIndex = Math.floor( Math.random(0, players.length) );
+    activeWord = words[Math.floor( Math.random() * (words.length) )];
     players[activePlayerIndex].active = true;
   
     io.to(players[activePlayerIndex].id).emit('active',true);
+    io.emit("redirect");
+    
+    io.to(players[activePlayerIndex].id).emit('activeWord',activeWord);
 }
 
 function formatMessage(username,text){

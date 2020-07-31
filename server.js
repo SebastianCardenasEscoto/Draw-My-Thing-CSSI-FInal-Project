@@ -143,7 +143,7 @@ function chooseNewActivePlayer(){
     io.to(players[activePlayerIndex].id).emit('active',false);
     players[activePlayerIndex].active = false;
   
-    activePlayerIndex = Math.floor( Math.random(0, players.length) );
+    activePlayerIndex = Math.floor( Math.random() * players.length );
     activeWord = words[Math.floor( Math.random() * (words.length) )];
     players[activePlayerIndex].active = true;
   
@@ -160,6 +160,8 @@ function chooseNewActivePlayer(){
        io.to(player.id).emit("active",false);
      }  
     });
+    
+    io.emit("clearCanv")
 }
 
 function formatMessage(username,text){

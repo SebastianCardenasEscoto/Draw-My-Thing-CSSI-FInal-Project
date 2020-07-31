@@ -90,16 +90,15 @@ function setup(){
 
 function draw()  { 
   // This fucntion allows the background to change to whatever color is selected.\
-  switchText();
   if(isPlayerActive){
     
+    colorPickerVisibility(true);
+    guessForm.style.visibility = "hidden";
     // paintbrush.color = paintbrushColorPicker.color();
-    if(  JSON.stringify(backgroundColor) != JSON.stringify(colorPicker.color() ) ){
+    if(JSON.stringify(backgroundColor) != JSON.stringify(colorPicker.color() ) ){
       updateBackground();
       socket.emit("backgroundColor",backgroundColor);
       // 
-      colorPickerVisibility(true);
-      guessForm.style.visibility = "hidden";
     } 
   } else{
     colorPickerVisibility(false);
@@ -200,18 +199,7 @@ guessForm.addEventListener("submit", (e)=>{
   e.target.elements.msg.focus();
 });
 
-function switchText()  {
-  let topText = document.getElementById('top-text');
-  if(!gameStart){
-    
-  }else{
-    if(isPlayerActive == true){
-        topText.innerHTML = "You are the Drawer";
-      } else if(isPlayerActive == false) {
-        topText.innerHTML = "You are the Guesser";
-      }
-  }
-  }
+
 
 function resetCanv(){
    canv = createCanvas(400,400);
@@ -251,7 +239,7 @@ function colorPickerVisibility(bool){
     colorPicker.style("visibility:visible");
     paintbrushColorPicker.style("visibility:visible");
     
-  } else if(gameStart == true){
+  } else{
     colorpickers.forEach(colorpicker => colorpicker.style.visibility = "hidden");
     colorPicker.style("visibility:hidden");
     paintbrushColorPicker.style("visibility:hidden");
@@ -281,11 +269,17 @@ function displayWord(word){
   document.getElementById('top-text-container').innerHTML = "";
   div.innerHTML = "You are the Drawer!";
   document.getElementById('top-text-container').appendChild(div);
-  div.innerHTML = `Your word is: ${word}`;
-  document.getElementById('top-text-container').appendChild(div);
+  
+  let newdiv = document.createElement('h1');
+  
+  newdiv.innerHTML = `Your word is: ${word}`;
+  document.getElementById('top-text-container').appendChild(newdiv);
+  
+  colorPickerVisibility(true);
 }
 
 function updateGuesserText(){
   console.log("here!")
-  document.getElementById('top-text-container').innerHTML = "<h1> You are the Guesser </h1>"
+  document.getElementById('top-text-container').innerHTML = "<h1> You are the Guesser </h1>";
+  colorPickerVisibility(false);
 }

@@ -43,14 +43,16 @@ function setup(){
    switchText();
   });
   
-  socket.on("redirect", ()=> {
-    if(!isPlayerActive) isPlayerActive = false;
-    switchText();
+  socket.on("guesser", ()=> {
+    updateGuesserText();
   });
   
   socket.on("activeWord", activeWord => displayWord(activeWord));
   
-  socket.on("active", (activity) => isPlayerActive = activity);
+  socket.on("active", (activity) => {
+   isPlayerActive = activity;
+   
+  });
   
   socket.on("mouse", (drawerData) => {
       let drawerBrush = new PaintBrush;
@@ -275,11 +277,13 @@ function outputPlayer(msg){
 
 function displayWord(word){
   let div = document.createElement('h1');
+  
+  document.getElementById('top-text-container').innerHTML = "";
   div.innerHTML = `Your word is: ${word}`;
   document.getElementById('top-text-container').appendChild(div);
   document.getElementById('top-text').innerHTML = "You are the Drawer!";
 }
 
-function guesserText(){
-  
+function updateGuesserText(){
+  document.getElementById('top-text-container').innerHTML = "<h1> You are the Guesser </h1>"
 }

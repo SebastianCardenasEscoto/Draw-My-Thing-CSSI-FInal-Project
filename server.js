@@ -144,6 +144,12 @@ function chooseNewActivePlayer(){
     io.emit("redirect");
     
     io.to(players[activePlayerIndex].id).emit('activeWord',activeWord);
+  
+    players.forEach( player => {
+     if(!player.active){
+       io.to(player.id).emit("guesser");
+     }  
+    });
 }
 
 function formatMessage(username,text){

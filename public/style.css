@@ -100,18 +100,132 @@ h1{
 
 
 
-.container {
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
+.#p{
+margin-top:9px;
+}
+#people{
+
+background-color: #f1c40f;
+width:250px;
+height:440px;
+margin-left:767px;
+margin-top:-462px;
+border: 6px solid white;
+
+
+
+}
+#pr{
+font-size:12px;
+margin-top:-34px;
+margin-left: 82px;
+}
+#chatroom{
+background-color:#e74c3c;
+font-family: verdana;
+color:white;
+font-size: 30px;
+text-align:center;
+border: 2px solid white;
+border-radius:15px;
+width:190px;
+height:60px;
+
 }
 
-.darker {
-  border-color: #ccc;
-  background-color: #ddd;
+#btn{
+background-color: white;
+font-size:15px;
+font-family: Verdana;
+color:black;
+width:56px;
+height:51px;
+text-align: center;
+margin-left:0px;
+border-radius:10px;
+outline:none;
+border: 2px solid #e74c3c;
+
 }
+#btn1{
+background-color: white;
+font-size:15px;
+font-family: Verdana;
+color:black;
+width:100px;
+height:40px;
+text-align: center;
+margin-left:1040px;
+margin-top: -40px;
+border-radius:10px;
+outline:none;
+border: 2px solid #e74c3c;
+
+}
+#messageInput{
+ margin-left: 532px;
+text-align:center;
+border-radius:10px;
+outline:none;
+shadow:none;
+font-size:15px;
+font-family: Verdana;
+color:black;
+width:250px;
+height:50px;
+}
+
+
+#t {
+text-align:left;
+font-size:15px;
+font-family: Verdana;
+color:black;
+border: 2px solid #f1c40f;
+  margin-top: -5px;
+  margin-left: 72px;
+  width:200px;
+  height:90px;
+  background-color:white;
+  border-radius:12px;
+  resize: none;
+      outline: none;
+
+}
+#chat{
+
+border: 6px solid white;
+width:459px;
+background-color:#e74c3c;
+margin:auto;
+border-radius: 10px;
+margin-left:300px;
+}
+
+::-webkit-scrollbar { 
+	display: none;
+}
+#circle{
+width:50px;
+height:50px;
+border-radius:100px;
+border: 5px solid white;
+margin-left:25px;
+background-color:#f1c40f;
+
+}
+#circle1{
+width:50px;
+height:50px;
+border-radius:100px;
+border: 5px solid white;
+margin-left:25px;
+background-color:#3498db;
+
+}
+
+
+
 
 
 

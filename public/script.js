@@ -69,6 +69,8 @@ function setup(){
   
   socket.emit('playerJoin',userName);
   
+  socket.on('playerJoin',(player) => outputPlayer(player));
+  
   noStroke();
   
   colorPicker = createColorPicker('#ed225d');
@@ -273,4 +275,11 @@ function outputMessage(msg){
                   ${msg.text}
 						  </p>`;
   chatMessages.appendChild(div);
+}
+
+function outputPlayer(msg){
+  let div = document.createElement('div');
+  div.classList.add('message'); div.classList.add('small-message');
+  div.innerHTML = `<p class ="meta"> ${msg.username}: ${msg.score} points</p>`;
+  document.getElementById('player-box').appendChild(div);
 }

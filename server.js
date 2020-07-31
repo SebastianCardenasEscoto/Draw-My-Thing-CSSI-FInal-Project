@@ -37,8 +37,8 @@ io.sockets.on('connection', (socket) =>{
     console.log(players);
     console.log(players.length);
     
-    io.emit("guess", formatMessage("Draw my Thing",  `${}getCurrentUser(socket.id).username`)
-    
+    io.emit("guess", formatMessage("Draw my Thing",  `${getCurrentUser(socket.id).username} has joined`) );
+    io.emit("playerJoin", getCurrentUser(socket.id));
     
     if(players.length > 2){
       if(gameStarted == false){

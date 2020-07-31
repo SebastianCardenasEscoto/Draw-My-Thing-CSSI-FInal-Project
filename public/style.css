@@ -225,7 +225,14 @@ background-color:#3498db;
 
 }
 
-
+#communication-box{
+  background-color:lightblue;
+  margin-left:20px;
+  width:400px;
+  display:flex;
+  flex-direction:column;
+  align-content:center;
+}
 
 
 

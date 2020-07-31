@@ -54,6 +54,12 @@ function setup(){
   
   socket.on("active", (activity) => isPlayerActive = activity);
   
+  socket.on("mouse", (drawerData) => {
+      let drawerBrush = new PaintBrush;
+      Object.assign(drawerBrush,drawerData);
+      drawerBrush.draw();
+     });
+ 
   socket.on("backgroundColor", (apBackgroundColor) => {
     console.log(apBackgroundColor);
     let bolor = color(apBackgroundColor._array[0]*255,apBackgroundColor._array[1]*255,apBackgroundColor._array[2]*255,apBackgroundColor._array[3]*255);
@@ -63,27 +69,19 @@ function setup(){
   socket.on("guess", (guess) =>{
     outputMessage(guess);
   });
+  
   paintbrush = new PaintBrush;
   
   socket.emit('playerJoin',userName);
+  
   noStroke();
+  
   colorPicker = createColorPicker('#ed225d');
   colorPicker.parent("background-color-picker");
   
-   paintbrushColorPicker = createColorPicker('#fff');
-   paintbrushColorPicker.parent("paintbrush-color-picker");
+  paintbrushColorPicker = createColorPicker('#fff');
+  paintbrushColorPicker.parent("paintbrush-color-picker");
   
-  socket.on("mouse", (drawerData) => {
-      let drawerBrush = new PaintBrush;
-      Object.assign(drawerBrush,drawerData);
-
-      let pbrushColor = new color(drawerBrush.color._array[0]*255,drawerBrush.color._array[1]*255,drawerBrush.color._array[2]*255,drawerBrush.color._array[3]*255);
-      pbrushColor.colorMode = RGB;
-      console.log(pbrushColor);
-      drawerBrush.color = pbrushColor;
-      drawerBrush.draw();
-     });
- 
   }
 
 function draw()  {
@@ -97,7 +95,7 @@ function draw()  {
   switchText();
   if(isPlayerActive){
     
-    paintbrush.color = paintbrushColorPicker.color();
+    // paintbrush.color = paintbrushColorPicker.color();
     if(  JSON.stringify(backgroundColor) != JSON.stringify(colorPicker.color() ) ){
       updateBackground();
       socket.emit("backgroundColor",backgroundColor);
@@ -225,7 +223,6 @@ function updateBackground(bgc){
     backgroundColor = colorPicker.color();
     drawingForm.style.backgroundColor = backgroundColor;
   } else{
-    console.log(bgc);
     backgroundColor = bgc;
     drawingForm.style.backgroundColor = backgroundColor;
   }

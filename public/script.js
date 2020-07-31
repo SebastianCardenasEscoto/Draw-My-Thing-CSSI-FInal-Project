@@ -11,7 +11,10 @@ let backgroundColor = 51;
 let drawingForm = document.getElementById("sketch-div");
 let guessForm = document.getElementById("guessForm");
 
-let colorPicker, paintbrush, socket, canv, isPlayerActive, gameStart, previousBackground, Interactivefield, output;
+let colorPicker, paintbrush, socket, canv, isPlayerActive, 
+    gameStart, previousBackground, Interactivefield, output,
+    paintbrushColorPicker;
+
 let img, img2;
 let r , c;
 socket = io.connect();
@@ -63,7 +66,10 @@ function setup(){
   socket.emit('playerJoin',userName);
   noStroke();
   colorPicker = createColorPicker('#ed225d');
-  colorPicker.parent("color-picker");
+  colorPicker.parent("background-color-picker");
+  
+   paintbrushColorPicker = createColorPicker('#fff');
+   paintbrushColorPicker.parent("paintbrush-color-picker");
   
   socket.on("mouse", (drawerData) => {
       let drawerBrush = new PaintBrush;

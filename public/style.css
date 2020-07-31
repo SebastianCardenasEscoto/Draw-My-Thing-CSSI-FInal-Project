@@ -273,3 +273,16 @@ background-color:#3498db;
   display:flex;
   align-items:center;
 }
+
+.color-picker{
+  display:flex;
+  flex-direction:column;
+  justify
+}
+.color-picker .meta{
+  background-color:blue; width:200px; height:20px;
+}
+
+.color-picker label{
+  color:white;
+}

@@ -279,11 +279,13 @@ function displayWord(word){
   let div = document.createElement('h1');
   
   document.getElementById('top-text-container').innerHTML = "";
+  div.innerHTML = "You are the Drawer!";
+  document.getElementById('top-text-container').appendChild(div);
   div.innerHTML = `Your word is: ${word}`;
   document.getElementById('top-text-container').appendChild(div);
-  document.getElementById('top-text').innerHTML = "You are the Drawer!";
 }
 
 function updateGuesserText(){
+  console.log("here!")
   document.getElementById('top-text-container').innerHTML = "<h1> You are the Guesser </h1>"
 }

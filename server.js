@@ -14,7 +14,7 @@ let gameStarted = false, activePlayerIndex,activeWord;
 
 let rawdata = fs.readFileSync('words.json');
 let words = JSON.parse(rawdata).words;
-console.log(words);
+
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
@@ -51,12 +51,20 @@ io.sockets.on('connection', (socket) =>{
         io.emit("gameStart", gameStarted);
         activePlayerIndex = Math.floor( Math.random() * (players.length) );
         activeWord = words[Math.floor( Math.random() * (words.length) )];
-        console.log(words[1]);
         players[activePlayerIndex].active = true;
  
         io.to(players[activePlayerIndex].id).emit('active',true);
         io.to(players[activePlayerIndex].id).emit('activeWord',activeWord);
-        socket.broadcast.emit("redirect");
+        
+        players.forEach( (player) => {
+        console.log(player.username);
+            if(!player.active){
+               console.log(player.username)
+               io.to(player.id).emit("guesser");
+               io.to(player.id).emit("active",false);
+           }  
+        });
+        
       }
     }
     
@@ -64,7 +72,6 @@ io.sockets.on('connection', (socket) =>{
   
   socket.on("backgroundColor", (bgc) => {
    socket.broadcast.emit("backgroundColor",bgc);
-   console.log(bgc);
   });
   
   socket.on("guess", msg => {
@@ -145,9 +152,12 @@ function chooseNewActivePlayer(){
     
     io.to(players[activePlayerIndex].id).emit('activeWord',activeWord);
   
-    players.forEach( player => {
+    players.forEach( (player) => {
+      console.log(player.username);
      if(!player.active){
+       console.log(player.username)
        io.to(player.id).emit("guesser");
+       io.to(player.id).emit("active",false);
      }  
     });
 }

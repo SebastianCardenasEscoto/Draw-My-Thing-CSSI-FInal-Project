@@ -79,15 +79,18 @@ function draw()  {
   // image(img2,60,10,20,20);
   
   // This fucntion allows the background to change to whatever color is selected.\
+  switchText();
   if(isPlayerActive){
     if(  JSON.stringify(backgroundColor) != JSON.stringify(colorPicker.color() ) ){
       updateBackground();
       socket.emit("backgroundColor",backgroundColor);
       
       colorPickerVisibility(true);
+      guessForm.style.visibility = "hidden";
     } 
   } else{
     colorPickerVisibility(false);
+    guessForm.style.visibility = "visible";
   }
 
   

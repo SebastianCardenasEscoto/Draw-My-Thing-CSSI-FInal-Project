@@ -23,10 +23,11 @@ socket = io.connect();
  }
 
 function setup(){
-  Interactivefield = createInput();
-  Interactivefield.changed(newText);
-  Interactivefield.changed(newTyping);
-  output = select('#output');
+  // Interactivefield = createInput();
+  // Interactivefield.changed(newText);
+  // Interactivefield.changed(newTyping);
+  // output = select('#output');
+  
   // img.loadPixels();
   // r = img.get(img.width / 2, img.height / 2);
   // c = img2.get(img2.width / 2, img2.height / 2);
@@ -81,10 +82,12 @@ function draw()  {
   if(isPlayerActive){
     if(  JSON.stringify(backgroundColor) != JSON.stringify(colorPicker.color() ) ){
       updateBackground();
-      socket.emit("backgroundColor",backgroundColor);  
+      socket.emit("backgroundColor",backgroundColor);
+      
+      colorPickerVisibility(true);
     } 
   } else{
-    drawingForm.style.backgroundColor = backgroundColor;
+    colorPickerVisibility(false);
   }
 
   
@@ -184,9 +187,9 @@ guessForm.addEventListener("submit", (e)=>{
 function switchText()  {
   let topText = document.getElementById('top-text');
   if(isPlayerActive == true){
-      topText.innerHtml = "You are the Drawer";
+      topText.innerHTML = "You are the Drawer";
     } else{
-      topText.innerHtml = "You are the Guesser";
+      topText.innerHTML = "You are the Guesser";
     }
 }
 
@@ -230,4 +233,14 @@ function newTyping()  {
 
 function newText()  {
   
+}
+
+function colorPickerVisibility(bool){
+  if(bool){
+    document.getElementById("color-picker").style.visibility = "visible"
+    colorPicker.style("visibility:visible");
+  } else {
+    document.getElementById("color-picker").style.visibility = "hidden"
+    colorPicker.style("visibility:hidden");
+  }
 }

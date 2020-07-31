@@ -40,7 +40,6 @@ function setup(){
   // This lines of codes pretty much explain it self
   socket.on("gameStarted", ()=>{
    gameStart = true;
-   switchText();
   });
   
   socket.on("guesser", ()=> {
@@ -76,7 +75,10 @@ function setup(){
   
   socket.emit('playerJoin',userName);
   
-  socket.on('playerJoin',(player) => outputPlayer(player));
+  socket.on('playerJoin',(players) => {
+    clearPlayerBox();
+    players.forEach( player => outputPlayer(player) ); 
+  });
   
   noStroke();
   
@@ -261,6 +263,10 @@ function outputPlayer(msg){
   div.classList.add('message'); div.classList.add('small-message');
   div.innerHTML = `<p class ="meta"> ${msg.username}: ${msg.score} points</p>`;
   document.getElementById('player-box').appendChild(div);
+}
+
+function clearPlayerBox(){
+  document.getElementById('player-box').innerHTML = "";
 }
 
 function displayWord(word){

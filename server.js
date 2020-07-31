@@ -43,7 +43,7 @@ io.sockets.on('connection', (socket) =>{
     console.log(players.length);
     
     io.emit("guess", formatMessage("Draw my Thing",  `${getCurrentUser(socket.id).username} has joined`) );
-    io.emit("playerJoin", getCurrentUser(socket.id));
+    io.emit("playerJoin", players);
     
     if(players.length > 2){
       if(gameStarted == false){
@@ -95,7 +95,7 @@ io.sockets.on('connection', (socket) =>{
     console.log(`${socket.id} has left the chat`);
     userLeave(socket.id);
     playerLeave(socket.id);
-    console.log(players);
+    io.emit("playerJoin", players)
     if(players.length < 3){
       gameStarted = false;
     }
@@ -161,7 +161,8 @@ function chooseNewActivePlayer(){
      }  
     });
     
-    io.emit("clearCanv")
+    io.emit("clearCanv");
+    io.emit("playerJoin",players);
 }
 
 function formatMessage(username,text){

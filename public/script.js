@@ -272,7 +272,7 @@ function outputPlayer(msg){
 }
 
 function clearPlayerBox(){
-  document.getElementById('player-box').innerHTML = "";
+  document.getElementById('player-box').innerHTML = `<h3 class="message" style="background-color:lightblue; color:rgb(72,72,72);">Players:</h3>`;
 }
 
 function displayWord(word){

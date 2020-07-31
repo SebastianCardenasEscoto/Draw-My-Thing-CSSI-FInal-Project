@@ -39,7 +39,7 @@ function setup(){
   // javascript working space
   canv = createCanvas(400,400);
   canv.parent('sketch-div');
-  colorMode(RGB, 255);
+  
   
   socket.on("clearCanv", ()=>{
      resetCanv();
@@ -76,7 +76,7 @@ function setup(){
   socket.on("mouse", (drawerData) => {
       let drawerBrush = new PaintBrush;
       Object.assign(drawerBrush,drawerData);
-      // console.log(drawerBrush.color);
+
       let pbrushColor = new color(drawerBrush.color._array[0]*255,drawerBrush.color._array[1]*255,drawerBrush.color._array[2]*255,drawerBrush.color._array[3]*255);
       console.log(pbrushColor);
       drawerBrush.color = pbrushColor;

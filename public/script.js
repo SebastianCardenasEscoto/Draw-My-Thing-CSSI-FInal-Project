@@ -46,8 +46,8 @@ function setup(){
   });
   
   socket.on("gameStarted", ()=>{
+   gameStart = true;
    switchText();
-   gameStart= true;
   });
   
   socket.on("redirect", ()=> switchText());
@@ -207,7 +207,10 @@ function switchText()  {
   let topText = document.getElementById('top-text');
   if(isPlayerActive == true){
       topText.innerHTML = "You are the Drawer";
-    } else{
+    } else if(gameStart == null) {
+      
+    }else{
+      
       topText.innerHTML = "You are the Guesser";
     }
 }

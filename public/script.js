@@ -43,7 +43,12 @@ function setup(){
    switchText();
   });
   
-  socket.on("redirect", ()=> switchText());
+  socket.on("redirect", ()=> {
+    if(!isPlayerActive) isPlayerActive = false;
+    switchText();
+  });
+  
+  socket.on("activeWord", activeWord => displayWord(activeWord));
   
   socket.on("active", (activity) => isPlayerActive = activity);
   
@@ -195,14 +200,16 @@ guessForm.addEventListener("submit", (e)=>{
 
 function switchText()  {
   let topText = document.getElementById('top-text');
-  if(isPlayerActive == true){
-      topText.innerHTML = "You are the Drawer";
-    } else if(gameStart == true) {
-      topText.innerHTML = "You are the Guesser";
-    }else{
-      
-    }
-}
+  if(!gameStart){
+    
+  }else{
+    if(isPlayerActive == true){
+        topText.innerHTML = "You are the Drawer";
+      } else if(isPlayerActive == false) {
+        topText.innerHTML = "You are the Guesser";
+      }
+  }
+  }
 
 function resetCanv(){
    canv = createCanvas(400,400);
@@ -232,18 +239,6 @@ function mouseInCanvas(){
     return true;
 }
 
-function newTyping()  {
-  // output.html(#ifield.value());
-  
-  
-
-}
-
-
-
-function newText()  {
-  
-}
 
 function colorPickerVisibility(bool){
     let colorpickers = document.getElementById("color-pickers").children;
@@ -276,4 +271,10 @@ function outputPlayer(msg){
   div.classList.add('message'); div.classList.add('small-message');
   div.innerHTML = `<p class ="meta"> ${msg.username}: ${msg.score} points</p>`;
   document.getElementById('player-box').appendChild(div);
+}
+
+function displayWord(word){
+  let div = document.createElement('h1');
+  div.innerHTML = `Your word is: ${word}`;
+  document.getElementById('top-text-box').appendChild(div);
 }

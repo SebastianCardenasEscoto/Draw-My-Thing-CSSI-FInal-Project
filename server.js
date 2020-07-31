@@ -49,11 +49,12 @@ io.sockets.on('connection', (socket) =>{
         gameStarted = true;
         socket.broadcast.emit("gameStart", gameStarted);
         activePlayerIndex = Math.floor( Math.random() * (players.length) );
-        console.log(activePlayerIndex);
+        activeWord = Math.floor( Math.random() * (words.length) );
         players[activePlayerIndex].active = true;
  
         io.to(players[activePlayerIndex].id).emit('active',true);
-        socket.broadcast.emit("redirct");
+        io.to(players[activePlayerIndex].id).emit('activeWord',activeWord);
+        socket.broadcast.emit("redirect");
       }
     }
     

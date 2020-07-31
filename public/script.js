@@ -36,7 +36,8 @@ function setup(){
   socket.on("clearCanv", ()=>{
      resetCanv();
   });
-  
+  // This line execute the gameStarted function 
+  // This lines of codes pretty much explain it self
   socket.on("gameStarted", ()=>{
    gameStart = true;
    switchText();

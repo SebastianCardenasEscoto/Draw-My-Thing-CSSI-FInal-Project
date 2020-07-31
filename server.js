@@ -6,7 +6,7 @@
 const express = require("express");
 const app = express();
 const socket = require('socket.io');
-const momment = require("moment");
+const moment = require("moment");
 let users = []; let players = [];
 let gameStarted = false, activePlayerIndex;
 
@@ -37,6 +37,8 @@ io.sockets.on('connection', (socket) =>{
     console.log(players);
     console.log(players.length);
     
+    io.emit("guess", formatMessage("Draw my Thing",  `${}getCurrentUser(socket.id).username`)
+    
     
     if(players.length > 2){
       if(gameStarted == false){
@@ -58,7 +60,7 @@ io.sockets.on('connection', (socket) =>{
    console.log(bgc);
   });
   
-  socket.on("guess", msg => io.emit("guess",msg));
+  socket.on("guess", msg => io.emit("guess", formatMessage(getCurrentUser(socket.id).username,msg)));
   
   socket.on("clearCanv", () => socket.broadcast.emit("clearCanv"));
   
@@ -130,4 +132,8 @@ function formatMessage(username,text){
     text,
     time: moment().format('h:mm a')
   }
+}
+
+function getCurrentUser(id){
+  return players.find(player =>player.id === id);
 }

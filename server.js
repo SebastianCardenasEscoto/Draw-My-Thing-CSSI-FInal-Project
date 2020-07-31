@@ -45,7 +45,7 @@ io.sockets.on('connection', (socket) =>{
     io.emit("guess", formatMessage("Draw my Thing",  `${getCurrentUser(socket.id).username} has joined`) );
     io.emit("playerJoin", players);
     
-    if(players.length > 2){
+    if(players.length > 1){
       if(gameStarted == false){
         gameStarted = true;
         io.emit("gameStart", gameStarted);
@@ -96,7 +96,7 @@ io.sockets.on('connection', (socket) =>{
     userLeave(socket.id);
     playerLeave(socket.id);
     io.emit("playerJoin", players)
-    if(players.length < 3){
+    if(players.length < 2){
       gameStarted = false;
     }
     

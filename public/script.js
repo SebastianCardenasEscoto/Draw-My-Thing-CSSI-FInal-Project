@@ -207,11 +207,10 @@ function switchText()  {
   let topText = document.getElementById('top-text');
   if(isPlayerActive == true){
       topText.innerHTML = "You are the Drawer";
-    } else if(gameStart == null) {
-      
+    } else if(gameStart == true) {
+      topText.innerHTML = "You are the Guesser";
     }else{
       
-      topText.innerHTML = "You are the Guesser";
     }
 }
 

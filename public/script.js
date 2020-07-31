@@ -276,5 +276,6 @@ function outputPlayer(msg){
 function displayWord(word){
   let div = document.createElement('h1');
   div.innerHTML = `Your word is: ${word}`;
-  document.getElementById('top-text-box').appendChild(div);
+  document.getElementById('top-text-container').appendChild(div);
+  document.getElementById('top-text').innerHTML = "You are the Drawer!";
 }

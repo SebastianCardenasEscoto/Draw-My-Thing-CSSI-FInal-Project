@@ -13,7 +13,8 @@ let gameStarted = false, activePlayerIndex,activeWord;
 
 
 let rawdata = fs.readFileSync('words.json');
-let words = JSON.parse(rawdata);
+let words = JSON.parse(rawdata).words;
+console.log(words);
 
 // make all the files in 'public' available
 // https://expressjs.com/en/starter/static-files.html
@@ -47,9 +48,10 @@ io.sockets.on('connection', (socket) =>{
     if(players.length > 2){
       if(gameStarted == false){
         gameStarted = true;
-        socket.broadcast.emit("gameStart", gameStarted);
+        io.emit("gameStart", gameStarted);
         activePlayerIndex = Math.floor( Math.random() * (players.length) );
-        activeWord = Math.floor( Math.random() * (words.length) );
+        activeWord = words[Math.floor( Math.random() * (words.length) )];
+        console.log(words[1]);
         players[activePlayerIndex].active = true;
  
         io.to(players[activePlayerIndex].id).emit('active',true);
@@ -65,7 +67,14 @@ io.sockets.on('connection', (socket) =>{
    console.log(bgc);
   });
   
-  socket.on("guess", msg => io.emit("guess", formatMessage(getCurrentUser(socket.id).username,msg)));
+  socket.on("guess", msg => {
+    if(gameStarted){
+      if(msg.toLowerCase() == activeWord.toLowerCase()){
+        getCurrentUser(socket.id).score
+      }
+    }
+    io.emit("guess", formatMessage(getCurrentUser(socket.id).username,msg))
+  });
   
   socket.on("clearCanv", () => socket.broadcast.emit("clearCanv"));
   

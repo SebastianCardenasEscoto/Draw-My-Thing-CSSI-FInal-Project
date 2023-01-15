@@ -12,7 +12,7 @@ The rest of the players must guess what the drawer is drawing. Whoever guesses f
 
 ![Alt text](https://cdn.glitch.global/788491d6-3d68-4b92-871c-448f512a6761/guesser.png?v=1673769813329)
 
-You can play it [here](https://cssi-final-project-dmt.glitch.me/) (You'll can open two tabs to play against yourself)
+You can play it [here](https://cssi-final-project-dmt.glitch.me/) (You can open two tabs to play against yourself)
 
 ## Made with [Glitch](https://glitch.com/)
 

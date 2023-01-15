@@ -1,4 +1,4 @@
-# hello-express
+# Draw My Thing Clone
 
 A server that serves a webpage, its resources, and some data
 

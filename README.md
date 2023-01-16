@@ -2,7 +2,7 @@
 
 A multiplayer guessing game based of scibbl.io / Pictionary. 
 
-![Alt text](https://cdn.glitch.global/788491d6-3d68-4b92-871c-448f512a6761/intro.png?v=1673770081466)
+![Alt text](https://media3.giphy.com/media/FvyCDwjdvhrF6Yxr27/giphy.gif?cid=790b76118135fbe7feab0a8edc1060b329753d79128a97c2&rid=giphy.gif&ct=g)
 
 One player is randomly chosen to be the drawer. This player gets access to a p5.js canvas where they can draw a randomly selected word.
 

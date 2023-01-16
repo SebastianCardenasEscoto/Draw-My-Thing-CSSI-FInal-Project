@@ -6,11 +6,11 @@ A multiplayer guessing game based of scibbl.io / Pictionary.
 
 One player is randomly chosen to be the drawer. This player gets access to a p5.js canvas where they can draw a randomly selected word.
 
-![Alt text](https://cdn.glitch.global/788491d6-3d68-4b92-871c-448f512a6761/drawer.png?v=1673769979638)
+![Alt text](https://media3.giphy.com/media/exaKSdEyPRAE0fdBqH/giphy.gif?cid=790b761135c0b429251b7fa5d9aa0d05e22bd6033b950d96&rid=giphy.gif&ct=g)
 
 The rest of the players must guess what the drawer is drawing. Whoever guesses first wins the round and is awarded points.
 
-![Alt text](https://cdn.glitch.global/788491d6-3d68-4b92-871c-448f512a6761/guesser.png?v=1673769813329)
+![Alt text](https://media0.giphy.com/media/jeDDeUi9BXu9cdtSiD/giphy.gif?cid=790b7611ecb17007423710945fdffae62873a489d3d46b79&rid=giphy.gif&ct=g)
 
 You can play it [here](https://cssi-final-project-dmt.glitch.me/) (You can open two tabs to play against yourself)
 
